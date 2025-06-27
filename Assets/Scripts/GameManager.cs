@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
 
     // TODO: Handle event on completed word - animation? visual indication? And launch an Update of UI of health bar and progress
     // -- Health bar and progress should only be updated on specific events being recieved, not on an update call as any change will be a direct result of a user input
-    void HandleWordCompletion(string completedWord)
+    void HandleWordCompletion(TypingEventPayload completedWord)
     {
-        Debug.Log("Completed word: " + completedWord);
+        Debug.Log("Completed word: " + completedWord.word);
     }
 }
