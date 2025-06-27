@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject pausePic;
-    public GameObject level1Pic;
+    public GameObject pauseImg;
+    public GameObject level1Img;
     public static bool isPaused;
     GameManager gManager;
 
