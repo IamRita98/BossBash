@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TopText
   - UserInput
+  - GameManager
   layers:
   - Default
   - TransparentFX
