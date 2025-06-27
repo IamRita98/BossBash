@@ -5,7 +5,7 @@ using UnityEngine;
 // TODO: Consider extending TypingConfig to be an enum of multiple attributes, the actual word being just one element
 public static class TypingConfig
 {
-    public static readonly List<string> LevelOneConfig = new List<string> { "random sentence fragment one" };
+    public static readonly List<string> LevelOneConfig = new List<string> { "random sentence fragment one", "random sentence fragment two", "random sentence fragment three" };
     public static readonly List<string> LevelTwoConfig = new List<string> { "random", "sentence", "fragment", "two" };
 
     public static List<string> GetTypingConfig(string scenario)

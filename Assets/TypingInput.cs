@@ -80,6 +80,14 @@ public class TypingInput : MonoBehaviour
                 typingConfig.Remove(rawInput);
                 rawInput = "";
                 outputText = "";
+                if (typingConfig.Count > 0)
+                {
+                    topTextElement.text = typingConfig[0];
+                }
+                else
+                {
+                    topTextElement.text = "";
+                }
             }
 
             textElement.text = outputText;
