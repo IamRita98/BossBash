@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -13,13 +14,26 @@ public class TypingInput : MonoBehaviour
     private bool hasCompletedWord = false;
 
     public TypingScenario currentScenario;
-    public static event System.Action<string> OnWordCompleted;
+    public static event System.Action<TypingEventPayload> OnWordCompleted;
     public static event System.Action<string> OnLevelCompleted;
     public List<string> typingConfig;
+    public int totalWordCount;
+    public int correctWords;
 
     public void Start()
     {
         typingConfig = TypingConfig.GetTypingConfig(currentScenario.scenarioName);
+        correctWords = 0;
+        totalWordCount = 0;
+        foreach (string sentence in typingConfig)
+        {
+            string[] words = sentence.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string word in words)
+            {
+                totalWordCount++;
+            }
+        }
+        Debug.Log("Total character count (excluding whitespace): " + totalWordCount);
     }
 
     void Update()
@@ -76,7 +90,9 @@ public class TypingInput : MonoBehaviour
             // Word matched, trigger event for any subscribers to respond and reset the user input - see GameManager for reference
             if (rawInput == topTextString)
             {
-                OnWordCompleted?.Invoke(rawInput);
+                correctWords += rawInput.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length;
+                TypingEventPayload typingEventPayload = new TypingEventPayload(rawInput, totalWordCount, correctWords);
+                OnWordCompleted?.Invoke(typingEventPayload);
                 typingConfig.Remove(rawInput);
                 rawInput = "";
                 outputText = "";
@@ -112,4 +128,19 @@ public class TypingInput : MonoBehaviour
         return Regex.Replace(input, "<color=.*?>|</color>", "");
     }
 
+}
+
+[System.Serializable]
+public class TypingEventPayload
+{
+    public string word;
+    public int totalWordsInScenario;
+    public int wordsCompleted;
+
+    public TypingEventPayload(string word, int totalWordsInScenario, int wordsCompleted)
+    {
+        this.word = word;
+        this.totalWordsInScenario = totalWordsInScenario;
+        this.wordsCompleted = wordsCompleted;
+    }
 }
