@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,17 @@ public class TypingInput : MonoBehaviour
     private string rawInput;
     private string outputText;
     private bool isInitialized = false;
+    private bool hasCompletedWord = false;
+
+    public TypingScenario currentScenario;
+    public static event System.Action<string> OnWordCompleted;
+    public static event System.Action<string> OnLevelCompleted;
+    public List<string> typingConfig;
+
+    public void Start()
+    {
+        typingConfig = TypingConfig.GetTypingConfig(currentScenario.scenarioName);
+    }
 
     void Update()
     {
@@ -25,6 +37,8 @@ public class TypingInput : MonoBehaviour
 
             return;
         }
+
+        if (typingConfig.Count == 0) { return; }
 
         else
         {
@@ -57,6 +71,15 @@ public class TypingInput : MonoBehaviour
             else
             {
                 outputText = "<color=green>" + rawInput + "</color>";
+            }
+
+            // Word matched, trigger event for any subscribers to respond and reset the user input - see GameManager for reference
+            if (rawInput == topTextString)
+            {
+                OnWordCompleted?.Invoke(rawInput);
+                typingConfig.Remove(rawInput);
+                rawInput = "";
+                outputText = "";
             }
 
             textElement.text = outputText;

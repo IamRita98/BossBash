@@ -7,25 +7,26 @@ using System.Linq;
 public class WordManager : MonoBehaviour
 {
     public List<Word> words;
+    public List<string> typingConfig;
+
+    public TypingScenario currentScenario;
 
     public GameObject textObject;
-    //public GameObject wordText;
 
     private void Start()
     {
         textObject = GameObject.FindGameObjectWithTag("TopText");
-        AddWord();
-        AddWord();
-        AddWord();
-        TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
-        string finalString = string.Join(" ", words.Select(w => w.word));
+        GetTypingConfig();
 
-        textElement.SetText(finalString);
+        if (currentScenario.scenarioName.Equals("LevelOne")) {
+            TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
+            textElement.SetText(typingConfig[0]);
+        }
     }
 
-    public void AddWord()
+    //May need to expand as TypingConfig grows past initial sentence value
+    public void GetTypingConfig()
     {
-        Word word = new Word(WordGenerator.GetRandomWord());
-        words.Add(word);
+        typingConfig = TypingConfig.GetTypingConfig(currentScenario.scenarioName);
     }
 }
