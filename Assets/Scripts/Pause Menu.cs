@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject pausePic;
+    public GameObject level1Pic;
     public static bool isPaused;
     GameManager gManager;
 
@@ -13,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
+        pausePic.SetActive(false);
         gManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
@@ -35,12 +38,14 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        pausePic.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        pausePic.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
