@@ -24,6 +24,11 @@ public class WordManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     //May need to expand as TypingConfig grows past initial sentence value
     public void GetTypingConfig()
     {
