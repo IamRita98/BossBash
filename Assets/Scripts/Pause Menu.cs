@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
-        pausePic.SetActive(false);
+        pauseImg.SetActive(false);
         gManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
@@ -38,14 +38,14 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
-        pausePic.SetActive(true);
+        pauseImg.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
-        pausePic.SetActive(false);
+        pauseImg.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
