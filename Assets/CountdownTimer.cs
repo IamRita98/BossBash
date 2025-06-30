@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public float timeRemaining = 10f;
+    public float timeRemaining;
     public bool timerIsRunning = false;
     public TextMeshProUGUI timerText;
     public TypingScenario currentScenario;
