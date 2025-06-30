@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TypingInput : MonoBehaviour
 {
-    private TextMeshProUGUI textElement;
+    private TextMeshProUGUI userInputText;
     private TextMeshProUGUI topTextElement;
     private string rawInput;
     private string outputText;
@@ -41,12 +41,13 @@ public class TypingInput : MonoBehaviour
 
         if (!isInitialized)
         {
-            textElement = GameObject.FindGameObjectWithTag("UserInput")?.GetComponent<TextMeshProUGUI>();
+            userInputText = GameObject.FindGameObjectWithTag("UserInput")?.GetComponent<TextMeshProUGUI>();
             topTextElement = GameObject.FindGameObjectWithTag("TopText")?.GetComponent<TextMeshProUGUI>();
 
-            if (textElement != null && topTextElement != null)
+            if (userInputText != null && topTextElement != null)
             {
                 isInitialized = true;
+                userInputText.text = ""; // Clear any initial text
             }
 
             return;
@@ -56,8 +57,8 @@ public class TypingInput : MonoBehaviour
 
         else
         {
-            rawInput = StripColorTags(textElement.text);
-            string inputString = textElement.text ?? "";
+            rawInput = StripColorTags(userInputText.text);
+            string inputString = userInputText.text ?? "";
             string topTextString = topTextElement.text ?? "";
 
             foreach (char c in Input.inputString)
@@ -106,7 +107,7 @@ public class TypingInput : MonoBehaviour
                 }
             }
 
-            textElement.text = outputText;
+            userInputText.text = outputText;
         }
     }
 
