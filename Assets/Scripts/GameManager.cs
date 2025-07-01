@@ -15,7 +15,11 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         TypingInput.OnWordCompleted -= HandleWordCompletion;
+<<<<<<< Updated upstream
         TypingInput.OnLevelCompleted -= HandleLevelCompletion;
+=======
+        TypingInput.OnLevelCompleted -=HandleLevelCompletion;
+>>>>>>> Stashed changes
     }
 
     // TODO: Handle event on completed word - animation? visual indication? And launch an Update of UI of health bar and progress
@@ -29,5 +33,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Level completed: " + scenarioName);
         //end current level and play a cut scene or something to move to next level or end game
     }
+<<<<<<< Updated upstream
 //<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
