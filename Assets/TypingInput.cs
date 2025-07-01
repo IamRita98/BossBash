@@ -59,7 +59,31 @@ public class TypingInput : MonoBehaviour
                 outputText = "<color=green>" + rawInput + "</color>";
             }
 
+<<<<<<< Updated upstream
             textElement.text = outputText;
+=======
+            // Word matched, trigger event for any subscribers to respond and reset the user input - see GameManager for reference
+            if (rawInput == topTextString)
+            {
+                correctWords += rawInput.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length;
+                TypingEventPayload typingEventPayload = new TypingEventPayload(rawInput, totalWordCount, correctWords);
+                OnWordCompleted?.Invoke(typingEventPayload);
+                typingConfig.Remove(rawInput);
+                rawInput = "";
+                outputText = "";
+                if (typingConfig.Count > 0)
+                {
+                    topTextElement.text = typingConfig[0];
+                }
+                else
+                {
+                    topTextElement.text = "";
+                    OnLevelCompleted?.Invoke(currentScenario.scenarioName);
+                }
+            }
+
+            userInputText.text = outputText;
+>>>>>>> Stashed changes
         }
     }
 

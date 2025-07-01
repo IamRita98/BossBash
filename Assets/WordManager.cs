@@ -20,7 +20,17 @@ public class WordManager : MonoBehaviour
         TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
         string finalString = string.Join(" ", words.Select(w => w.word));
 
+<<<<<<< Updated upstream
         textElement.SetText(finalString);
+=======
+        if (currentScenario.scenarioName.Equals("LevelOne")) {
+            TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
+            textElement.SetText(typingConfig[0]);
+        }else if (currentScenario.scenarioName.Equals("LevelTwo")) {
+            TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
+            textElement.SetText(typingConfig[0]);
+        }
+>>>>>>> Stashed changes
     }
 
     public void AddWord()
