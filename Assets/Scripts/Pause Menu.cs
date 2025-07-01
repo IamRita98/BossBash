@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused;
     GameManager gManager;
 
+    public GameObject pauseImg;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,17 +32,23 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+/*        if (pauseMenu.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ResumeGame();
+        }*/
     }
 
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        pauseImg.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        pauseImg.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
