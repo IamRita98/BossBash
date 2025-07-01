@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         TypingInput.OnWordCompleted -= HandleWordCompletion;
-        TypingInput.OnLevelCompleted -=HandleLevelCompletion;
+        TypingInput.OnLevelCompleted -= HandleLevelCompletion;
     }
 
     // TODO: Handle event on completed word - animation? visual indication? And launch an Update of UI of health bar and progress
