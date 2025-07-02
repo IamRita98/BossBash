@@ -21,6 +21,9 @@ public class WordManager : MonoBehaviour
         if (currentScenario.scenarioName.Equals("LevelOne")) {
             TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
             textElement.SetText(typingConfig[0]);
+        }else if (currentScenario.scenarioName.Equals("LevelTwo")){
+            TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
+            textElement.SetText(typingConfig[0]);
         }
     }
 
