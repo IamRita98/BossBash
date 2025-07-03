@@ -104,6 +104,7 @@ public class TypingInput : MonoBehaviour
                 else
                 {
                     topTextElement.text = "";
+                    OnLevelCompleted?.Invoke(currentScenario.scenarioName);
                 }
             }
 

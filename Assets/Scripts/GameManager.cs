@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
     void OnEnable()
     {
         TypingInput.OnWordCompleted += HandleWordCompletion;
+        TypingInput.OnLevelCompleted += HandleLevelCompletion;
     }
 
     void OnDisable()
     {
         TypingInput.OnWordCompleted -= HandleWordCompletion;
+        TypingInput.OnLevelCompleted -= HandleLevelCompletion;
     }
 
     // TODO: Handle event on completed word - animation? visual indication? And launch an Update of UI of health bar and progress
@@ -21,5 +23,10 @@ public class GameManager : MonoBehaviour
     void HandleWordCompletion(TypingEventPayload completedWord)
     {
         Debug.Log("Completed word: " + completedWord.word);
+    }
+    void HandleLevelCompletion(string scenarioName)
+    {
+        Debug.Log("Level completed: " + scenarioName);
+        //end current level and play a cut scene or something to move to next level or end game
     }
 }
