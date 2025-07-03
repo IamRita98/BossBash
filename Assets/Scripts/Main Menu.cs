@@ -7,12 +7,14 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level 1");
+        // Make sure to change source
+        SceneManager.LoadScene("Level 1 Greg");
     }
 
     public void Replay()
     {
-        SceneManager.LoadScene("Level 1");
+        // Make sure to change source
+        SceneManager.LoadScene("Level 1 Greg");
     }
 
     public void Endless()
@@ -23,5 +25,34 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void GoToMainMenu()
+    {
+        // Make sure to change source
+        SceneManager.LoadScene("Main Menu Greg");
+    }
+
+    public void LevelSelect()
+    {
+        SceneManager.LoadScene("Level Select");
+    }
+
+    public void PlayAct1()
+    {
+        // Make sure to change source
+        SceneManager.LoadScene("Level 1 Greg");
+    }
+
+    public void PlayAct2()
+    {
+        // Make sure to change source
+        SceneManager.LoadScene("Level 1 Greg");
+    }
+
+    public void PlayAct3()
+    {
+        // Make sure to change source
+        SceneManager.LoadScene("Level 1 Greg");
     }
 }
