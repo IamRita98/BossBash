@@ -7,6 +7,7 @@ public static class TypingConfig
 {
     public static readonly List<string> LevelOneConfig = new List<string> { "random sentence fragment one", "random sentence fragment two", "random sentence fragment three" };
     public static readonly List<string> LevelTwoConfig = new List<string> { "random", "sentence", "fragment", "two" };
+    public static readonly List<string> LevelThreeConfig = new List<string> { "cum" };
 
     public static List<string> GetTypingConfig(string scenario)
     {
@@ -16,6 +17,8 @@ public static class TypingConfig
                 return LevelOneConfig;
             case "LevelTwo":
                 return LevelTwoConfig;
+            case "LevelThree":
+                return LevelThreeConfig;
             default:
                 return new List<string> {  "No config for given scenario" };
         }

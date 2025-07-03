@@ -25,6 +25,11 @@ public class WordManager : MonoBehaviour
             TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
             textElement.SetText(typingConfig[0]);
         }
+        else if (currentScenario.scenarioName.Equals("LevelThree"))
+        {
+            TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
+            textElement.SetText(typingConfig[0]);
+        }
     }
 
     private void Awake()
