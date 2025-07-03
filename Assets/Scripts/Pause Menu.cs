@@ -56,7 +56,7 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Main Menu Greg");
     }
 
     public void QuitGame()
@@ -66,6 +66,6 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Level " + gManager.currentLevel);
+        SceneManager.LoadScene("Level " + gManager.currentLevel + " Greg");
     }
 }
