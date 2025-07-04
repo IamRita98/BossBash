@@ -8,6 +8,7 @@ TagManager:
   - UserInput
   - GameManager
   - Countdown
+  - PlayerDialogue
   layers:
   - Default
   - TransparentFX
