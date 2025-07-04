@@ -7,7 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
-    GameManager gManager;
+    public GameObject levelLayout;
+    //GameManager gManager;
 
     public GameObject pauseImg;
 
@@ -15,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
-        gManager=GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        //gManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -42,6 +43,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         pauseImg.SetActive(true);
+        levelLayout.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -49,6 +51,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         pauseImg.SetActive(false);
+        levelLayout.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -56,7 +59,7 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Main Menu Greg");
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void QuitGame()
@@ -66,6 +69,6 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Level " + gManager.currentLevel + " Greg");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

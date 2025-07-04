@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     void HandleLevelCompletion(string scenarioName)
     {
         Debug.Log("Level completed: " + scenarioName);
+        currentLevel++;
         //end current level and play a cut scene or something to move to next level or end game
     }
 }
