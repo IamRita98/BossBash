@@ -30,7 +30,7 @@ public class TypingInput : MonoBehaviour
         List<TypingLine> enemyLines = typingConfig
             .Where(item => item.entity == "enemy")
             .ToList();
-        List<TypingLine> nonEnemyLines = typingConfig
+        List<TypingLine> playerLines = typingConfig
             .Where(item => item.entity != "enemy")
             .ToList();
         int totalWordCount = enemyLines
@@ -107,19 +107,12 @@ public class TypingInput : MonoBehaviour
                 outputText = "";
                 if (typingConfig.Count > 0)
                 {
-                    //TypingLine nextLine = typingConfig[0];
-                    //typingConfig.RemoveAt(0);
-
-                    if (typingConfig[0].entity == "Player")
+                    while (typingConfig[0].entity == "Player")
                     {
                         playerDialogueTextElement.text = typingConfig[0].textToType;
                         typingConfig.RemoveAt(0);
-                        topTextElement.text = typingConfig[0].textToType;
                     }
-                    else
-                    {
-                        topTextElement.text = typingConfig[0].textToType;
-                    }
+                    topTextElement.text = typingConfig[0].textToType;
                 }
                 else
                 {
