@@ -7,7 +7,7 @@ using System.Linq;
 public class WordManager : MonoBehaviour
 {
     public List<Word> words;
-    public List<string> typingConfig;
+    public List<TypingLine> typingConfig;
 
     public TypingScenario currentScenario;
 
@@ -20,15 +20,15 @@ public class WordManager : MonoBehaviour
 
         if (currentScenario.scenarioName.Equals("LevelOne")) {
             TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
-            textElement.SetText(typingConfig[0]);
+            textElement.SetText(typingConfig[0].textToType);
         }else if (currentScenario.scenarioName.Equals("LevelTwo")){
             TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
-            textElement.SetText(typingConfig[0]);
+            textElement.SetText(typingConfig[0].textToType);
         }
         else if (currentScenario.scenarioName.Equals("LevelThree"))
         {
             TextMeshProUGUI textElement = textObject.GetComponent<TextMeshProUGUI>();
-            textElement.SetText(typingConfig[0]);
+            textElement.SetText(typingConfig[0].textToType);
         }
     }
 

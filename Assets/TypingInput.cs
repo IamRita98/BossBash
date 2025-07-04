@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -8,6 +10,7 @@ public class TypingInput : MonoBehaviour
 {
     private TextMeshProUGUI userInputText;
     private TextMeshProUGUI topTextElement;
+    private TextMeshProUGUI playerDialogueTextElement;
     private string rawInput;
     private string outputText;
     private bool isInitialized = false;
@@ -16,7 +19,7 @@ public class TypingInput : MonoBehaviour
     public TypingScenario currentScenario;
     public static event System.Action<TypingEventPayload> OnWordCompleted;
     public static event System.Action<string> OnLevelCompleted;
-    public List<string> typingConfig;
+    public List<TypingLine> typingConfig;
     public int totalWordCount;
     public int correctWords;
 
@@ -24,16 +27,17 @@ public class TypingInput : MonoBehaviour
     {
         typingConfig = TypingConfig.GetTypingConfig(currentScenario.scenarioName);
         correctWords = 0;
-        totalWordCount = 0;
-        foreach (string sentence in typingConfig)
-        {
-            string[] words = sentence.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string word in words)
-            {
-                totalWordCount++;
-            }
-        }
-        Debug.Log("Total character count (excluding whitespace): " + totalWordCount);
+        List<TypingLine> enemyLines = typingConfig
+            .Where(item => item.entity == "enemy")
+            .ToList();
+        List<TypingLine> nonEnemyLines = typingConfig
+            .Where(item => item.entity != "enemy")
+            .ToList();
+        int totalWordCount = enemyLines
+            .SelectMany(line => line.textToType.Split((char[])null, StringSplitOptions.RemoveEmptyEntries))
+            .Count();
+
+        Debug.Log("Total character count for boss dialogue to type (excluding whitespace): " + totalWordCount);
     }
 
     void Update()
@@ -43,11 +47,13 @@ public class TypingInput : MonoBehaviour
         {
             userInputText = GameObject.FindGameObjectWithTag("UserInput")?.GetComponent<TextMeshProUGUI>();
             topTextElement = GameObject.FindGameObjectWithTag("TopText")?.GetComponent<TextMeshProUGUI>();
+            playerDialogueTextElement = GameObject.FindGameObjectWithTag("PlayerDialogue")?.GetComponent<TextMeshProUGUI>();
 
-            if (userInputText != null && topTextElement != null)
+            if (userInputText != null && topTextElement != null && playerDialogueTextElement != null)
             {
                 isInitialized = true;
                 userInputText.text = ""; // Clear any initial text
+                playerDialogueTextElement.text = "";
             }
 
             return;
@@ -60,6 +66,7 @@ public class TypingInput : MonoBehaviour
             rawInput = StripColorTags(userInputText.text);
             string inputString = userInputText.text ?? "";
             string topTextString = topTextElement.text ?? "";
+            string playerDialogueString = playerDialogueTextElement.text ?? "";
 
             foreach (char c in Input.inputString)
             {
@@ -94,12 +101,25 @@ public class TypingInput : MonoBehaviour
                 correctWords += rawInput.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length;
                 TypingEventPayload typingEventPayload = new TypingEventPayload(rawInput, totalWordCount, correctWords);
                 OnWordCompleted?.Invoke(typingEventPayload);
-                typingConfig.Remove(rawInput);
+                //typingConfig.RemoveAll(obj => obj.textToType == rawInput);
+                typingConfig.RemoveAt(0);
                 rawInput = "";
                 outputText = "";
                 if (typingConfig.Count > 0)
                 {
-                    topTextElement.text = typingConfig[0];
+                    //TypingLine nextLine = typingConfig[0];
+                    //typingConfig.RemoveAt(0);
+
+                    if (typingConfig[0].entity == "Player")
+                    {
+                        playerDialogueTextElement.text = typingConfig[0].textToType;
+                        typingConfig.RemoveAt(0);
+                        topTextElement.text = typingConfig[0].textToType;
+                    }
+                    else
+                    {
+                        topTextElement.text = typingConfig[0].textToType;
+                    }
                 }
                 else
                 {
