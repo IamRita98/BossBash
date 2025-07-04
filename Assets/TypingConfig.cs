@@ -25,7 +25,13 @@ public static class TypingConfig
                 return LevelOneConfig;
             case "LevelTwo":
                 List<TypingLine> LevelTwoConfig = new List<TypingLine>();
-                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You are coming in late again? This is the fifth time this week. We could have you fired for this.", timeLimitSeconds: -1));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "What fool dares come before the Tribunal of Executives to challenge me to a type-off?", timeLimitSeconds: -1));
+                LevelTwoConfig.Add(new TypingLine(entity: "Player", textToType: "Me!", timeLimitSeconds: -1));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "Tyler Perkins? Accounting's number one imbecile? The Hominidae incapable of refilling our caffeine apparatus? Is this a practical joke?", timeLimitSeconds: -1));
+                LevelTwoConfig.Add(new TypingLine(entity: "Player", textToType: "Me!", timeLimitSeconds: -1));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You're serious... Well then, just try to out-type this!", timeLimitSeconds: -1));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "The Word Corporation is displeased to hear of your recent dissatisfaction within our company. " +
+                    "Word Corporation is not liable for any mental, physical, or psychic Infractions against your person during your employment, you have agreed to sign away these rights in your onboarding contract when joining our company.", timeLimitSeconds: -1));
                 return LevelTwoConfig;
             case "LevelThree":
                 List<TypingLine> LevelThreeConfig = new List<TypingLine>();

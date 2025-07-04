@@ -15,16 +15,20 @@ public class TypingInput : MonoBehaviour
     private string outputText;
     private bool isInitialized = false;
     private bool hasCompletedWord = false;
+    private bool isAdvancingLine = false;
 
     public TypingScenario currentScenario;
     public static event System.Action<TypingEventPayload> OnWordCompleted;
     public static event System.Action<string> OnLevelCompleted;
+    private List<TypingLine> activeTypingLines = new();
+    private float currentTime = 0f;
     public List<TypingLine> typingConfig;
     public int totalWordCount;
     public int correctWords;
 
     public void Start()
     {
+        InitializeTypingScenario();
         typingConfig = TypingConfig.GetTypingConfig(currentScenario.scenarioName);
         correctWords = 0;
         List<TypingLine> enemyLines = typingConfig
@@ -33,7 +37,7 @@ public class TypingInput : MonoBehaviour
         List<TypingLine> playerLines = typingConfig
             .Where(item => item.entity != "enemy")
             .ToList();
-        int totalWordCount = enemyLines
+        totalWordCount = enemyLines
             .SelectMany(line => line.textToType.Split((char[])null, StringSplitOptions.RemoveEmptyEntries))
             .Count();
 
@@ -42,88 +46,125 @@ public class TypingInput : MonoBehaviour
 
     void Update()
     {
-
         if (!isInitialized)
         {
-            userInputText = GameObject.FindGameObjectWithTag("UserInput")?.GetComponent<TextMeshProUGUI>();
-            topTextElement = GameObject.FindGameObjectWithTag("TopText")?.GetComponent<TextMeshProUGUI>();
-            playerDialogueTextElement = GameObject.FindGameObjectWithTag("PlayerDialogue")?.GetComponent<TextMeshProUGUI>();
-
-            if (userInputText != null && topTextElement != null && playerDialogueTextElement != null)
-            {
-                isInitialized = true;
-                userInputText.text = ""; // Clear any initial text
-                playerDialogueTextElement.text = "";
-            }
-
+            TryInitializeUIReferences();
             return;
         }
 
-        if (typingConfig.Count == 0) { return; }
+        if (typingConfig == null || typingConfig.Count == 0) return;
 
-        else
+        ProcessUserInput();
+        UpdateColoredText();
+        CheckForWordCompletion();
+    }
+
+    private void InitializeTypingScenario()
+    {
+        typingConfig = TypingConfig.GetTypingConfig(currentScenario.scenarioName);
+        correctWords = 0;
+
+        var enemyLines = typingConfig
+            .Where(item => item.entity == "enemy")
+            .ToList();
+
+        totalWordCount = enemyLines
+            .SelectMany(line => line.textToType.Split((char[])null, StringSplitOptions.RemoveEmptyEntries))
+            .Count();
+    }
+
+    private void TryInitializeUIReferences()
+    {
+        userInputText = GameObject.FindGameObjectWithTag("UserInput")?.GetComponent<TextMeshProUGUI>();
+        topTextElement = GameObject.FindGameObjectWithTag("TopText")?.GetComponent<TextMeshProUGUI>();
+        playerDialogueTextElement = GameObject.FindGameObjectWithTag("PlayerDialogue")?.GetComponent<TextMeshProUGUI>();
+
+        if (userInputText != null && topTextElement != null && playerDialogueTextElement != null)
         {
-            rawInput = StripColorTags(userInputText.text);
-            string inputString = userInputText.text ?? "";
-            string topTextString = topTextElement.text ?? "";
-            string playerDialogueString = playerDialogueTextElement.text ?? "";
+            isInitialized = true;
+            userInputText.text = "";
+            playerDialogueTextElement.text = "";
+        }
+    }
 
-            foreach (char c in Input.inputString)
-            {
-                if (c == '\b' && rawInput.Length > 0)
-                {
-                    rawInput = rawInput.Substring(0, rawInput.Length - 1);
-                }
-                else
-                {
-                    rawInput += c;
-                }
-            }
+    private void ProcessUserInput()
+    {
+        rawInput = StripColorTags(userInputText.text);
 
-            int divergenceIndex = GetDivergenceIndex(rawInput, topTextString);
-
-            if (divergenceIndex == 0)
+        foreach (char c in Input.inputString)
+        {
+            if (c == '\b' && rawInput.Length > 0)
             {
-                outputText = "<color=red>" + rawInput + "</color>";
-            }
-            else if (divergenceIndex < rawInput.Length)
-            {
-                outputText = "<color=green>" + rawInput.Substring(0, divergenceIndex) + "</color>" + "<color=red>" + rawInput.Substring(divergenceIndex) + "</color>";
+                rawInput = rawInput.Substring(0, rawInput.Length - 1);
             }
             else
             {
-                outputText = "<color=green>" + rawInput + "</color>";
+                rawInput += c;
             }
-
-            // Word matched, trigger event for any subscribers to respond and reset the user input - see GameManager for reference
-            if (rawInput == topTextString)
-            {
-                correctWords += rawInput.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length;
-                TypingEventPayload typingEventPayload = new TypingEventPayload(rawInput, totalWordCount, correctWords);
-                OnWordCompleted?.Invoke(typingEventPayload);
-                //typingConfig.RemoveAll(obj => obj.textToType == rawInput);
-                typingConfig.RemoveAt(0);
-                rawInput = "";
-                outputText = "";
-                if (typingConfig.Count > 0)
-                {
-                    while (typingConfig[0].entity == "Player")
-                    {
-                        playerDialogueTextElement.text = typingConfig[0].textToType;
-                        typingConfig.RemoveAt(0);
-                    }
-                    topTextElement.text = typingConfig[0].textToType;
-                }
-                else
-                {
-                    topTextElement.text = "";
-                    OnLevelCompleted?.Invoke(currentScenario.scenarioName);
-                }
-            }
-
-            userInputText.text = outputText;
         }
     }
+
+    private void UpdateColoredText()
+    {
+        string targetText = topTextElement.text ?? "";
+        int divergenceIndex = GetDivergenceIndex(rawInput, targetText);
+
+        if (divergenceIndex == 0)
+        {
+            outputText = $"<color=red>{rawInput}</color>";
+        }
+        else if (divergenceIndex < rawInput.Length)
+        {
+            outputText =
+                $"<color=green>{rawInput.Substring(0, divergenceIndex)}</color>" +
+                $"<color=red>{rawInput.Substring(divergenceIndex)}</color>";
+        }
+        else
+        {
+            outputText = $"<color=green>{rawInput}</color>";
+        }
+
+        userInputText.text = outputText;
+    }
+
+    private void CheckForWordCompletion()
+    {
+        string targetText = topTextElement.text ?? "";
+
+        if (rawInput == targetText)
+        {
+            correctWords += rawInput.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length;
+            OnWordCompleted?.Invoke(new TypingEventPayload(rawInput, totalWordCount, correctWords));
+            typingConfig.RemoveAt(0);
+            
+            rawInput = "";
+            outputText = "";
+            userInputText.text = "";
+
+            AdvanceToNextTypingLine();
+        }
+    }
+
+    //Could change this to a coroutine to introduce a delay before going to the next line - used for an animation
+    private void AdvanceToNextTypingLine()
+    {
+        while (typingConfig.Count > 0 && typingConfig[0].entity == "Player")
+        {
+            playerDialogueTextElement.text = typingConfig[0].textToType;
+            typingConfig.RemoveAt(0);
+        }
+
+        if (typingConfig.Count > 0)
+        {
+            topTextElement.text = typingConfig[0].textToType;
+        }
+        else
+        {
+            topTextElement.text = "";
+            OnLevelCompleted?.Invoke(currentScenario.scenarioName);
+        }
+    }
+
 
     int GetDivergenceIndex(string a, string b)
     {
@@ -158,4 +199,11 @@ public class TypingEventPayload
         this.totalWordsInScenario = totalWordsInScenario;
         this.wordsCompleted = wordsCompleted;
     }
+}
+
+public class ActiveTypingLine
+{
+    public TypingLine line;
+    public float expirationTime;
+    public GameObject textObject; // To display it on screen
 }
