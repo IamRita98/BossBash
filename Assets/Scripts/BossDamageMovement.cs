@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BossDamageMovement : MonoBehaviour
@@ -27,10 +29,16 @@ public class BossDamageMovement : MonoBehaviour
         // Debugging: set playerHP based on desiredHP
         if (desiredHP == 1)
             hurtZone.playerHP = 1;
+
+        else if (desiredHP == 0)
+            hurtZone.playerHP = 0;
+
         else if (desiredHP == 2)
             hurtZone.playerHP = 2;
+
         else
             hurtZone.playerHP = 3;
+        
 
         SetTargets(hurtZone.playerHP);
 
@@ -41,20 +49,27 @@ public class BossDamageMovement : MonoBehaviour
 
     private void SetTargets(int hp)
     {
-        if (hp == 3)
+       switch (hp)
         {
-            targetPosition = new Vector3(0, 3, -11);
-            targetScale = new Vector3(1, 1, 1);
-        }
-        else if (hp == 2)
-        {
-            targetPosition = new Vector3(0, 2, -11);
-            targetScale = new Vector3(1.5f, 1.5f, 1.5f);
-        }
-        else if (hp == 1)
-        {
-            targetPosition = new Vector3(0, 1, -11);
-            targetScale = new Vector3(2, 2, 2);
+            case 3:
+                targetPosition = new Vector3(0, 3, -11);
+                targetScale = new Vector3(1, 1, 1);
+                break;
+            case 2:
+                targetPosition = new Vector3(0, 2, -11);
+                targetScale = new Vector3(1.5f, 1.5f, 1.5f);
+                break;
+            case 1:
+                targetPosition = new Vector3(0, 1, -11);
+                targetScale = new Vector3(2, 2, 2);
+                break;
+            case 0:
+                //Debug.Log("Game Over bich");
+                break;
+            default:
+                targetPosition = Vector3.zero; // Fallback position
+                targetScale = Vector3.one; // Fallback scale
+                break;
         }
     }
 }
