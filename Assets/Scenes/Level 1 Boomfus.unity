@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 169142428}
   - component: {fileID: 169142427}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: UserInput
   m_TagString: UserInput
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,6 +1174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScenario: {fileID: 11400000, guid: 8d4c7636fabe6494ab0c04eaae580923, type: 2}
   typingConfig: []
+  enemyLines: []
   totalWordCount: 0
   correctWords: 0
 --- !u!4 &1654019297
@@ -2079,7 +2080,7 @@ GameObject:
   - component: {fileID: 2059203289}
   m_Layer: 5
   m_Name: Enemy Dialogue
-  m_TagString: TopText
+  m_TagString: MainDisplayText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

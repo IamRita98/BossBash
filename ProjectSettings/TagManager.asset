@@ -9,6 +9,13 @@ TagManager:
   - GameManager
   - Countdown
   - PlayerDialogue
+  - Canvas
+  - InnerCanvas
+  - MainDisplayText
+  - PopoutWordPlaceholder1
+  - PopoutWordPlaceholder2
+  - PopoutWordPlaceholder3
+  - PopoutWordPlaceholder4
   layers:
   - Default
   - TransparentFX
