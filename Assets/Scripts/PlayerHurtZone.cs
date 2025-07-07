@@ -17,7 +17,7 @@ public class PlayerHurtZone : MonoBehaviour
     {
         if (playerHP <= 0)
         {
-            GameOver();
+            pMenu.GameOver();
         }
     }
 
@@ -29,10 +29,5 @@ public class PlayerHurtZone : MonoBehaviour
         }
         Destroy(collision);
         playerHP--;
-    }
-
-    private void GameOver()
-    {
-        pMenu.GameOver();
     }
 }
