@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerHurtZone : MonoBehaviour
 {
     public int playerHP = 3;
+    SoundManager soundManager;
 
+    public void Start()
+    {
+        soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
+    }
     private void Update()
     {
         if (playerHP <= 0)
@@ -22,6 +27,7 @@ public class PlayerHurtZone : MonoBehaviour
         }
         Destroy(collision);
         playerHP--;
+        soundManager.OnDamageSFX();
     }
 
     private void GameOver()
