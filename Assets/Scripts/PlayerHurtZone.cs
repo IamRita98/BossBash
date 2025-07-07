@@ -6,11 +6,18 @@ public class PlayerHurtZone : MonoBehaviour
 {
     public int playerHP = 3;
 
+    PauseMenu pMenu;
+
+    private void Start()
+    {
+        pMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
+    }
+
     private void Update()
     {
         if (playerHP <= 0)
         {
-            GameOver();
+            pMenu.GameOver();
         }
     }
 
@@ -22,11 +29,5 @@ public class PlayerHurtZone : MonoBehaviour
         }
         Destroy(collision);
         playerHP--;
-    }
-
-    private void GameOver()
-    {
-        //Prob fade screen & music then load back into Main menu not sure how we want to do this yet.
-        //Or we could bring up an edited pause menu w/ just retry/return to menu
     }
 }
