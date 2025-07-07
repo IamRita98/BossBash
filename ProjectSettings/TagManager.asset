@@ -9,6 +9,8 @@ TagManager:
   - GameManager
   - Countdown
   - PlayerDialogue
+  - Sound Manager
+  - Start Button
   layers:
   - Default
   - TransparentFX
