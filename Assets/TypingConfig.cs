@@ -14,13 +14,13 @@ public static class TypingConfig
                 LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "You are coming in late again? This is the fifth time this week. We could have you fired for this."));
                 LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "Fired?"));
                 LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Yes, fired. Gone, done, finished. Either shape up or leave!"));
-                LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "Heh, well, I guess I can reveal my plan then. I've been late because I’ve been gathering evidence. This corporation is corrupt all the way up to the top. And now, I’m going to challenge you to a type-off to claim my place at its head."));
+                LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "Heh, well, I guess I can reveal my plan then. I've been late because Iâ€™ve been gathering evidence. This corporation is corrupt all the way up to the top. And now, Iâ€™m going to challenge you to a type-off to claim my place at its head."));
                 LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Wh-What!? A type-off? Are you insane? This isn't a joke! A type-off is a serious thing! Just get back to your desk and get to work and I won't take this infraction any further!"));
                 LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "No"));
-                LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Ok then, a type-off it is. You're a terrible employee! I've kept you trapped in your position for years, hoping that one day you’d quit on your own so that I didn’t have to deal with you anymore! " +
-                    "Now you've gone ahead and saved me the trouble of having to fire you by challenging me to this type-off. And once this challenge is over, you’re going to be banished to the typing dimension! Fool!"));
+                LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Ok then, a type-off it is. You're a terrible employee! I've kept you trapped in your position for years, hoping that one day youâ€™d quit on your own so that I didnâ€™t have to deal with you anymore! " +
+                    "Now you've gone ahead and saved me the trouble of having to fire you by challenging me to this type-off. And once this challenge is over, youâ€™re going to be banished to the typing dimension! Fool!"));
                 LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "Your words are too simple to type. What is this, a third-grade reading level?"));
-                LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Guh! You can’t be serious! You defeated that entire paragraph? Those were some of my strongest words… Fine, maybe I can't defeat you." +
+                LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Guh! You can't be serious! You defeated that entire paragraph? Those were some of my strongest words... Fine, maybe I can't defeat you." +
                     "But this corporation isn't finished until you can take down the CEO. I'll give you the key, but know that if you go up that elevator, you'll never come back down."));
                 return LevelOneConfig;
 
@@ -41,8 +41,12 @@ public static class TypingConfig
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "cretinous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder2"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "lackluster", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder3"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "malodorous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder4"));
-                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "elephantine", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder2"));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "insipid", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder1"));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "pusillanimous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder4"));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "obstreperous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder2"));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "elephantine", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder3"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "reprehensible", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder1"));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "absolutely cretinous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder4"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "...", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder4"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "A lil' bitch", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder3"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "Damn, Management warned me you were good. But you actually survived my legalese AND my barrage? Fine, but I still have one final trick up my sleeve...", timeAllowed: 30.0));
