@@ -8,12 +8,14 @@ public class CountdownTimer : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TypingScenario currentScenario;
 
+    PauseMenu pMenu;
+
     void Start()
     {
         timerIsRunning = true;
         timerText = GameObject.FindGameObjectWithTag("Countdown")?.GetComponent<TextMeshProUGUI>();
         timeRemaining = currentScenario.timeLimit;
-
+        pMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
     void Update()
@@ -33,6 +35,9 @@ public class CountdownTimer : MonoBehaviour
 
                 //TODO: Add in UI integration with actual countdown clock element
                 Debug.Log("Timer ended");
+
+                //GameOver for timeout
+                pMenu.GameOver();
             }
         }
     }
