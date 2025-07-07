@@ -16,6 +16,9 @@ TagManager:
   - PopoutWordPlaceholder2
   - PopoutWordPlaceholder3
   - PopoutWordPlaceholder4
+  - Sound Manager
+  - Start Button
+
   layers:
   - Default
   - TransparentFX
