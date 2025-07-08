@@ -16,7 +16,8 @@ public class BossDamageMovement : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 targetScale;
     private Quaternion targetRotation;
-    private float rotationZ;
+    private float transitionSpeedInitial = 5f;
+    private float transitionSpeedActual = 2f;
     private Transform goTransform;
     public GameObject pos1GO;
     public GameObject pos2GO;
@@ -33,7 +34,7 @@ public class BossDamageMovement : MonoBehaviour
         // Initialize the target position and scale based on the current player HP
         transform.position = posOffScreen.transform.position;
         //transform.localScale = targetScale;
-        rotationZ = gameObject.GetComponent<Transform>().rotation.z;
+       // rotationZ = gameObject.GetComponent<Transform>().rotation.z;
         goTransform = gameObject.GetComponent<Transform>();
     }
 
@@ -61,13 +62,13 @@ public class BossDamageMovement : MonoBehaviour
         // Smoothly interpolate position and scale
         if (hasEnteredScreen == false)
         {
-            transitionSpeed = 5f;
+            transitionSpeed = transitionSpeedInitial;
             hasEnteredScreen = true;
         }
         if (Vector3.Distance(pos1GO.transform.position, transform.position) < 2)
         {
             Debug.Log("Changing trans speed");
-            transitionSpeed = 2f;
+            transitionSpeed = transitionSpeedActual;
         }
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * transitionSpeed);
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
