@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onHoverSFX: {fileID: 8300000, guid: 80b03040ba8084d418cd88a061adf1bd, type: 3}
   onClickSFX: {fileID: 8300000, guid: 5bd61462b3ef5334ea4b96d6c5e6672a, type: 3}
-  onWordCompleteSFX: {fileID: 8300000, guid: ed1752ca0670afe43a706801c85d07bf, type: 3}
+  onWordCompleteSFX: {fileID: 8300000, guid: 6aa3f908c36a07b4e9a89459dd345379, type: 3}
   onLevelCompleteSFX: {fileID: 8300000, guid: 85f8eac5030c78b4aa9a54d306f07da8, type: 3}
   onStartBtnClickSFX: {fileID: 8300000, guid: efdc20e7c6bb8d14c81af50ef6128407, type: 3}
   onTypingSFX:
