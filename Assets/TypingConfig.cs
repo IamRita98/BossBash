@@ -88,7 +88,7 @@ public static class TypingConfig
                 LevelThreeConfig.Add(new TypingLine(
                     entity: "Enemy",
                     timeAllowed: 20.0,
-                    triviaQuestion: "Which US state only borders one state?",
+                    triviaQuestion: "Which US state only borders one other state?",
                     answerOptions: new List<string> { "Florida", "Maine", "Canada", "Wyoming" },
                     correctAnswerIndex: 1
                 ));
@@ -106,13 +106,6 @@ public static class TypingConfig
                     triviaQuestion: "Who did Michael Jackson want to be the actor for?",
                     answerOptions: new List<string> { "The Hulk", "Shazam", "Black Widow", "The Amazing Spiderman" },
                     correctAnswerIndex: 3
-                ));
-                LevelThreeConfig.Add(new TypingLine(
-                    entity: "Enemy",
-                    timeAllowed: 20.0,
-                    triviaQuestion: "What is the coolest way to write code?",
-                    answerOptions: new List<string> { "VSCode", "Vim", "In tears", "Classic pen and paper" },
-                    correctAnswerIndex: 1
                 ));
                 LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Noooo! I am defeated! Damn you Tyler Perkins!", timeAllowed: 2.0));
                 return LevelThreeConfig;
