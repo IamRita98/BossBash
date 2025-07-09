@@ -57,10 +57,12 @@ public class TypingInput : MonoBehaviour
 
         if (typingConfig == null || typingConfig.Count == 0) return;
 
-        if (currentScenario.scenarioName == "LevelTwo") {
+        if (currentScenario.scenarioName == "LevelTwo" || currentScenario.scenarioName == "LevelThree") {
            ProcessPromptExpirations();
         }
         ProcessUserInput();
+
+        // Color progress should only appear for non-trivia questions
         UpdateColoredText();
         CheckForWordCompletion();
     }
@@ -82,8 +84,7 @@ public class TypingInput : MonoBehaviour
                 currentProcessedLineIndex += 1;
             } 
             currentProcessedLine = typingConfig[currentProcessedLineIndex];
-            currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
-            currentActiveTextToType.text = currentProcessedLine.textToType;
+            SpawnNextLine();
             timeAtWordStart = currentTime;
         }
     }
@@ -109,32 +110,27 @@ public class TypingInput : MonoBehaviour
         }
     }
 
-    void SpawnText(TypingLine typingLine, int id)
+    void SpawnNextLine()
     {
-        if (uiTextElements.TryGetValue(typingLine.textGameTag, out var currentLineTextVar))
+        if (currentProcessedLine.IsTrivia)
         {
-            currentLineTextVar.text = typingLine.textToType;
-            currentActiveTextToType = currentLineTextVar;
+            uiTextElements.TryGetValue("MainDisplayText", out var MainDisplayTextVar);
+            MainDisplayTextVar.text = currentProcessedLine.triviaQuestion;
+
+            uiTextElements.TryGetValue("PopoutWordPlaceholder1", out var PopoutWordPlaceholder1TextVar);
+            uiTextElements.TryGetValue("PopoutWordPlaceholder2", out var PopoutWordPlaceholder2TextVar);
+            uiTextElements.TryGetValue("PopoutWordPlaceholder3", out var PopoutWordPlaceholder3TextVar);
+            uiTextElements.TryGetValue("PopoutWordPlaceholder4", out var PopoutWordPlaceholder4TextVar);
+            PopoutWordPlaceholder1TextVar.text = currentProcessedLine.answerOptions[0];
+            PopoutWordPlaceholder2TextVar.text = currentProcessedLine.answerOptions[1];
+            PopoutWordPlaceholder3TextVar.text = currentProcessedLine.answerOptions[2];
+            PopoutWordPlaceholder4TextVar.text = currentProcessedLine.answerOptions[3];
         }
-
-        // Option - Dynamically creating text in random areas for popout words - kinda janky and imo not worth it since we don't plan on having too many words at once
-        /*
-        GameObject textGO = new GameObject("TimedText");
-        GameObject canvasGameObject = GameObject.FindGameObjectWithTag("InnerCanvas").gameObject;
-
-        textGO.transform.SetParent(canvasGameObject.transform, false);
-        textGO.layer = canvasGameObject.layer;
-
-        TextMeshProUGUI tmp = textGO.AddComponent<TextMeshProUGUI>();
-        tmp.text = typingLine.textToType;
-        tmp.fontSize = 36;
-
-        RectTransform rect = textGO.GetComponent<RectTransform>();
-        rect.localScale = Vector3.one;
-        rect.anchoredPosition = new Vector2(0, -50 * activePrompts.Count); // Stack vertically
-
-        spawnedTextObjects[typingLine] = textGO;
-        */
+        else
+        {
+            currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
+            currentActiveTextToType.text = currentProcessedLine.textToType;
+        }
     }
 
     private void InitializeTypingScenario()
@@ -149,12 +145,6 @@ public class TypingInput : MonoBehaviour
         totalWordCount = enemyLines
             .SelectMany(line => line.textToType.Split((char[])null, StringSplitOptions.RemoveEmptyEntries))
             .Count();
-
-        currentProcessedLineIndex = 0;
-        currentProcessedLine = typingConfig[0];
-        Debug.Log($"Initial line: {currentProcessedLine.textToType}");
-        currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
-        currentActiveTextToType.text = currentProcessedLine.textToType;
     }
 
     private void TryInitializeUIReferences(string[] tags)
@@ -180,6 +170,10 @@ public class TypingInput : MonoBehaviour
                 return;
             }
         }
+        currentProcessedLineIndex = 0;
+        currentProcessedLine = typingConfig[0];
+        Debug.Log($"Initial line: {currentProcessedLine.textToType}");
+        SpawnNextLine();
         isInitialized = true;
     }
 
@@ -206,40 +200,76 @@ public class TypingInput : MonoBehaviour
         if (!uiTextElements.TryGetValue("MainDisplayText", out var mainDisplayText)) return;
         if (!uiTextElements.TryGetValue("UserInput", out var userInputText)) return;
 
-        string targetText = currentActiveTextToType.text;
-        int divergenceIndex = GetDivergenceIndex(rawInput, targetText);
+        if (currentProcessedLine.IsTrivia)
+        {
+            string triviaTargetText = currentProcessedLine.answerOptions[currentProcessedLine.correctAnswerIndex];
+            userInputText.text = rawInput;
+        }
+        else {
+            string targetText = currentActiveTextToType.text;
+            int divergenceIndex = GetDivergenceIndex(rawInput, targetText);
 
-        if (divergenceIndex == 0)
-        {
-            outputText = $"<color=red>{rawInput}</color>";
-        }
-        else if (divergenceIndex < rawInput.Length)
-        {
-            outputText =
-                $"<color=green>{rawInput.Substring(0, divergenceIndex)}</color>" +
-                $"<color=red>{rawInput.Substring(divergenceIndex)}</color>";
-        }
-        else
-        {
-            outputText = $"<color=green>{rawInput}</color>";
-        }
+            if (divergenceIndex == 0)
+            {
+                outputText = $"<color=red>{rawInput}</color>";
+            }
+            else if (divergenceIndex < rawInput.Length)
+            {
+                outputText =
+                    $"<color=green>{rawInput.Substring(0, divergenceIndex)}</color>" +
+                    $"<color=red>{rawInput.Substring(divergenceIndex)}</color>";
+            }
+            else
+            {
+                outputText = $"<color=green>{rawInput}</color>";
+            }
 
-        userInputText.text = outputText;
+            userInputText.text = outputText;
+        }
     }
 
     private void CheckForWordCompletion()
     {
         if (!uiTextElements.TryGetValue("UserInput", out var userInputText)) return;
-        string targetText = currentActiveTextToType.text;
-        if (rawInput == targetText)
-        {
-            correctWords += rawInput.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length;
-            OnWordCompleted?.Invoke(new TypingEventPayload(rawInput, totalWordCount, correctWords));
 
-            rawInput = "";
-            outputText = "";
-            userInputText.text = "";
-            AdvanceToNextTypingLine();
+        if (currentProcessedLine.IsTrivia)
+        {
+            for (int i = 0; i < currentProcessedLine.answerOptions.Count; i++)
+            {
+                if (rawInput == currentProcessedLine.answerOptions[i])
+                {
+                    bool isCorrect = i == currentProcessedLine.correctAnswerIndex;
+
+                    if (isCorrect)
+                    {
+                        correctWords++;
+                        OnWordCompleted?.Invoke(new TypingEventPayload(rawInput, totalWordCount, correctWords));
+                    }
+                    else
+                    {
+                        // Send event for word failed
+                        Debug.Log("Wrong Answer");
+                    }
+
+                    rawInput = "";
+                    userInputText.text = "";
+                    AdvanceToNextTypingLine();
+                    return;
+                }
+            }
+        }
+        else { 
+            string targetText = currentActiveTextToType.text;
+            if (rawInput == targetText)
+            {
+                correctWords += rawInput.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Length;
+                OnWordCompleted?.Invoke(new TypingEventPayload(rawInput, totalWordCount, correctWords));
+
+                rawInput = "";
+                outputText = "";
+                userInputText.text = "";
+                AdvanceToNextTypingLine();
+            }
         }
     }
 
@@ -258,8 +288,7 @@ public class TypingInput : MonoBehaviour
             currentProcessedLineIndex += 1;
         }
         currentProcessedLine = typingConfig[currentProcessedLineIndex];
-        currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
-        currentActiveTextToType.text = currentProcessedLine.textToType;
+        SpawnNextLine();
         timeAtWordStart = currentTime;
 
         if( currentProcessedLineIndex >= typingConfig.Count )

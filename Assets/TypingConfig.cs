@@ -54,17 +54,10 @@ public static class TypingConfig
                 return LevelTwoConfig;
             case "LevelThree":
                 List<TypingLine> LevelThreeConfig = new List<TypingLine>();
-                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Can you withstand my strongest attack Ty? See if you can handle this! TRIVIA QUESTIONS!", timeAllowed: 20.0));
+                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Can you withstand my strongest attack Ty? See if you can handle this! TRIVIA QUESTIONS!", timeAllowed: 2.0));
                 LevelThreeConfig.Add(new TypingLine(entity: "Player", textToType: "Oh boy! Trivia!"));
                 LevelThreeConfig.Add(new TypingLine(
                     entity: "Enemy", 
-                    timeAllowed: 20.0,
-                    triviaQuestion: "Where do you work?",
-                    answerOptions: new List<string> { "Word Corp", "Typing Inc", "My Mom's House", "Writers HQ" },
-                    correctAnswerIndex: 0
-                ));
-                LevelThreeConfig.Add(new TypingLine(
-                    entity: "Enemy",
                     timeAllowed: 20.0,
                     triviaQuestion: "Where do you work?",
                     answerOptions: new List<string> { "Word Corp", "Typing Inc", "My Mom's House", "Writers HQ" },
@@ -106,7 +99,22 @@ public static class TypingConfig
                     answerOptions: new List<string> { "32", "34", "26", "35" },
                     correctAnswerIndex: 0
                 ));
-
+                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Heh. I can see you sweating. You can't hold out like this for much longer! But neither can I..."));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "Who did Michael Jackson want to be the actor for?",
+                    answerOptions: new List<string> { "The Hulk", "Shazam", "Black Widow", "The Amazing Spiderman" },
+                    correctAnswerIndex: 3
+                ));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "What is the coolest way to write code?",
+                    answerOptions: new List<string> { "VSCode", "Vim", "In tears", "Classic pen and paper" },
+                    correctAnswerIndex: 1
+                ));
+                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Noooo! I am defeated! Damn you Tyler Perkins!", timeAllowed: 2.0));
                 return LevelThreeConfig;
             default:
                 return new List<TypingLine>();
