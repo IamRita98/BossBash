@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public static class TypingConfig
 {
@@ -53,7 +54,60 @@ public static class TypingConfig
                 return LevelTwoConfig;
             case "LevelThree":
                 List<TypingLine> LevelThreeConfig = new List<TypingLine>();
-                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "You are coming in late again? This is the fifth time this week. We could have you fired for this."));
+                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Can you withstand my strongest attack Ty? See if you can handle this! TRIVIA QUESTIONS!", timeAllowed: 2.0));
+                LevelThreeConfig.Add(new TypingLine(entity: "Player", textToType: "Oh boy! Trivia!"));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy", 
+                    timeAllowed: 20.0,
+                    triviaQuestion: "Where do you work?",
+                    answerOptions: new List<string> { "Word Corp", "Typing Inc", "My Mom's House", "Writers HQ" },
+                    correctAnswerIndex: 0
+                ));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "What is your name?",
+                    answerOptions: new List<string> { "Titus Pilfer", "Tania Pisser", "Tyler Pyler", "Tyler Perkins" },
+                    correctAnswerIndex: 3
+                ));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "What is your motive?",
+                    answerOptions: new List<string> { "Become the Executive", "Lead the Council", "Become the CEO", "Destroy all corproations with a nuclear blast" },
+                    correctAnswerIndex: 3
+                ));
+                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Heh! That was just the warmup, too bad for you that I'm a genius with excellent memory", timeAllowed: 20.0));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "Which animal has the highest blood pressure?",
+                    answerOptions: new List<string> { "Elephants", "Rats", "Giraffes", "Human" },
+                    correctAnswerIndex: 2
+                ));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "Which US state only borders one other state?",
+                    answerOptions: new List<string> { "Florida", "Maine", "Canada", "Wyoming" },
+                    correctAnswerIndex: 1
+                ));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "Adult humans have how many teeth?",
+                    answerOptions: new List<string> { "32", "34", "26", "35" },
+                    correctAnswerIndex: 0
+                ));
+                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Heh. I can see you sweating. You can't hold out like this for much longer! But neither can I..."));
+                LevelThreeConfig.Add(new TypingLine(
+                    entity: "Enemy",
+                    timeAllowed: 20.0,
+                    triviaQuestion: "Who did Michael Jackson want to be the actor for?",
+                    answerOptions: new List<string> { "The Hulk", "Shazam", "Black Widow", "The Amazing Spiderman" },
+                    correctAnswerIndex: 3
+                ));
+                LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Noooo! I am defeated! Damn you Tyler Perkins!", timeAllowed: 2.0));
                 return LevelThreeConfig;
             default:
                 return new List<TypingLine>();
