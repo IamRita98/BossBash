@@ -38,7 +38,7 @@ public class TypingInput : MonoBehaviour
     public void Start()
     {
         InitializeTypingScenario();
-        sManage = GameObject.FindGameObjectWithTag("Sound Manager").GetComponent<SoundManager>();
+        sManage = GameObject.FindGameObjectWithTag("Sound Manager")?.GetComponent<SoundManager>();
     }
 
     void Update()
@@ -134,6 +134,10 @@ public class TypingInput : MonoBehaviour
             currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
             currentActiveTextToType.text = currentProcessedLine.textToType;
         }
+        if (currentProcessedLine.entity == "Enemy")
+        {
+            sManage.OnBossSpeakingSFX();
+        }
     }
 
     private void InitializeTypingScenario()
@@ -171,10 +175,6 @@ public class TypingInput : MonoBehaviour
             else
             {
                 return;
-            }
-            if(currentProcessedLine.entity == "Enemy")
-            {
-                sManage.OnBossSpeakingSFX();
             }
         }
         currentProcessedLineIndex = 0;

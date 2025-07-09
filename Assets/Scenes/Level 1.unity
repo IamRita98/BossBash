@@ -900,6 +900,7 @@ MonoBehaviour:
   enemyLines: []
   totalWordCount: 0
   correctWords: 0
+  sManage: {fileID: 0}
 --- !u!4 &384682564
 Transform:
   m_ObjectHideFlags: 0

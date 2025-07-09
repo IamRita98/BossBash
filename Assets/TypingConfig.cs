@@ -39,10 +39,9 @@ public static class TypingConfig
                 LevelTwoConfig.Add(new TypingLine(entity: "Player", textToType: "Uhm... I agree to these terms and conditions?"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You can outype a full block, but so what? Lets see how you do against my barrage attack!", timeAllowed: 2.0));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You're:", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder1"));
-                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "cretinous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder2"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "lackluster", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder3"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "malodorous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder4"));
-                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "insipid", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder1"));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "insipid", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder2"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "pusillanimous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder4"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "obstreperous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder2"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "elephantine", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder3"));
