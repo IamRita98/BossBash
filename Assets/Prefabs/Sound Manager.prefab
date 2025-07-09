@@ -64,7 +64,13 @@ MonoBehaviour:
   onDamageSFX:
   - {fileID: 8300000, guid: 6c6f6b25041b77c49a3022aa6d89880e, type: 3}
   - {fileID: 8300000, guid: 5a1415abdb6d3854e8ac38486f96a2e8, type: 3}
-  onBossSpeakSFX: []
+  onBossSpeakSFX:
+  - {fileID: 8300000, guid: d89919da2413cf54995a07b21aef31c3, type: 3}
+  - {fileID: 8300000, guid: 5f35f379eb3332040b364471134a0cf9, type: 3}
+  - {fileID: 8300000, guid: 58ccbb9e07dc7da4fa3df9606946b63c, type: 3}
+  - {fileID: 8300000, guid: ac7329e9b8209224f954294626ec4475, type: 3}
+  - {fileID: 8300000, guid: 61207a5053af65141be2298dabe1d3dd, type: 3}
+  - {fileID: 8300000, guid: 13f1a57bbd5fbf84383b87ff6711ea07, type: 3}
   playDamageSFX: 0
   playWordCompletionSFX: 0
 --- !u!82 &7524664922407748921

@@ -77,7 +77,7 @@ public class SoundManager : MonoBehaviour
     //Make sure to add button hover to pause menu buttons!
     public void OnBossSpeakingSFX()
     {
-/*        aSource.clip = onBossSpeakSFX[Random.Range(0, 5)];
-        aSource.Play();*/
+        aSource.clip = onBossSpeakSFX[Random.Range(0, 6)];
+        aSource.Play();
     }
 }
