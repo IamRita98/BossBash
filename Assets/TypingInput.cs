@@ -33,9 +33,12 @@ public class TypingInput : MonoBehaviour
     public int totalWordCount;
     public int correctWords;
 
+    public SoundManager sManage;
+
     public void Start()
     {
         InitializeTypingScenario();
+        sManage = GameObject.FindGameObjectWithTag("Sound Manager").GetComponent<SoundManager>();
     }
 
     void Update()
@@ -168,6 +171,10 @@ public class TypingInput : MonoBehaviour
             else
             {
                 return;
+            }
+            if(currentProcessedLine.entity == "Enemy")
+            {
+                sManage.OnBossSpeakingSFX();
             }
         }
         currentProcessedLineIndex = 0;
