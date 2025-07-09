@@ -95,7 +95,6 @@ public class BossDamageMovement : MonoBehaviour
 
     void PlayerHP2BossBehaviour(ref bool hasRotated)
     {
-        Debug.Log("cum");
         targetPosition = pos2GO.transform.position;
         targetScale = new Vector3(1.75f, 1.75f, 1.75f);
         if (!hasRotated2)
