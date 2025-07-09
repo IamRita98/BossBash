@@ -1694,6 +1694,7 @@ MonoBehaviour:
   levelLayout: {fileID: 1955421954}
   pauseImg: {fileID: 318950326}
   gameOverImg: {fileID: 1025110115}
+  textElements: {fileID: 0}
 --- !u!114 &856061409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4248,7 +4249,7 @@ GameObject:
   - component: {fileID: 2080451887}
   m_Layer: 5
   m_Name: TextElements
-  m_TagString: Untagged
+  m_TagString: TextElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
