@@ -26,7 +26,7 @@ public class TypingInput : MonoBehaviour
     private double timeAtWordStart = 0;
     private double currentTime;
     private int currentProcessedLineIndex;
-    private TypingLine currentProcessedLine;
+    public TypingLine currentProcessedLine;
 
     public List<TypingLine> typingConfig;
     public List<TypingLine> enemyLines;
@@ -137,6 +137,11 @@ public class TypingInput : MonoBehaviour
         if (currentProcessedLine.entity == "Enemy")
         {
             sManage.OnBossSpeakingSFX();
+            GameObject.FindGameObjectWithTag("PopoutWordTextbox1").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+            GameObject.FindGameObjectWithTag("PopoutWordTextbox2").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+            GameObject.FindGameObjectWithTag("PopoutWordTextbox3").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+            GameObject.FindGameObjectWithTag("PopoutWordTextbox4").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+            GameObject.FindGameObjectWithTag("MainWordTextbox").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
         }
     }
 
