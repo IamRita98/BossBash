@@ -18,6 +18,7 @@ public class BossDamageMovement : MonoBehaviour
     private Quaternion targetRotation;
     private float transitionSpeedInitial = 5f;
     private float transitionSpeedActual = 2f;
+    private float transitionScaleSpeed = 1;
     private Transform goTransform;
     public GameObject pos1GO;
     public GameObject pos2GO;
@@ -29,7 +30,7 @@ public class BossDamageMovement : MonoBehaviour
     bool hasEnteredScreen = false;
     void Start()
     {
-        hurtZone = GetComponent<PlayerHurtZone>();
+        hurtZone = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHurtZone>();
         //SetTargets(hurtZone.playerHP);
         // Initialize the target position and scale based on the current player HP
         transform.position = posOffScreen.transform.position;
@@ -56,11 +57,10 @@ public class BossDamageMovement : MonoBehaviour
         }
         if (Vector3.Distance(pos1GO.transform.position, transform.position) < 2)
         {
-            Debug.Log("Changing trans speed");
             transitionSpeed = transitionSpeedActual;
         }
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * transitionSpeed);
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * transitionScaleSpeed);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * transitionSpeed);
     }
 
@@ -69,8 +69,8 @@ public class BossDamageMovement : MonoBehaviour
         switch (hp)
         {
             case 3:
-                targetPosition = new Vector3(0, 3, -11);
-                targetScale = new Vector3(1, 1, 1);
+                targetPosition = pos1GO.transform.position;
+                targetScale = new Vector3(1.5f, 1.5f, 1.5f);
                 break;
             case 2:
                 PlayerHP2BossBehaviour(ref hasRotated2);

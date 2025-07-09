@@ -12,7 +12,7 @@ public class PlayerHurtZone : MonoBehaviour
     private void Start()
     {
         pMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
-        soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
+        soundManager = GameObject.Find("Sound Manager")?.GetComponent<SoundManager>();
     }
     
     private void Update()
