@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
     {
         // Make sure to change source
         SceneManager.LoadScene("Level 1");
-
     }
 
     public void Replay()
