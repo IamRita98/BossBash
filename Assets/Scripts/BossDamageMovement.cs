@@ -41,18 +41,7 @@ public class BossDamageMovement : MonoBehaviour
     void Update()
     {
         // Debugging: set playerHP based on desiredHP
-        if (desiredHP == 1)
-            hurtZone.playerHP = 1;
-
-        else if (desiredHP == 0)
-            hurtZone.playerHP = 0;
-
-        else if (desiredHP == 2)
-            hurtZone.playerHP = 2;
-
-        else
-            hurtZone.playerHP = 3;
-
+        hurtZone.playerHP = desiredHP;
 
         SetTargets(hurtZone.playerHP);
 
@@ -84,42 +73,48 @@ public class BossDamageMovement : MonoBehaviour
                 targetScale = new Vector3(1, 1, 1);
                 break;
             case 2:
-                //targetPosition = new Vector3(-10.54f, 0.369434267f, -12.0000744f);
-                targetPosition = pos2GO.transform.position;
-                targetScale = new Vector3(1.75f, 1.75f, 1.75f);
-                if (!hasRotated2)
-                {
-                    hasRotated2 = true;
-                    targetRotation = Quaternion.Euler(0, 0, 25f);
-                    StartCoroutine(BossTimer());
-                }
+                PlayerHP2BossBehaviour(ref hasRotated2);
                 break;
             case 1:
-                //targetPosition = new Vector3(-10.6599998f, -1.96000004f, -12.0000143f);
-                targetPosition = pos3GO.transform.position;
-                targetScale = new Vector3(2, 2, 2);
-                if (!hasRotated1)
-                {
-                    hasRotated1 = true;
-                    targetRotation = Quaternion.Euler(0, 0, -25);
-                    StartCoroutine(BossTimer());
-                }
+                PlayerHP1BossBehaviour(ref hasRotated1);
                 break;
             case 0:
                 //Debug.Log("Game Over bich");
                 break;
             default:
-                targetPosition = Vector3.zero; // Fallback position
-                targetScale = Vector3.one; // Fallback scale
                 Debug.Log("Something fucked hpwise");
-                //targetPosition = Vector3.zero;
-                //targetScale = Vector3.one;
                 break;
         }
     }
+
     IEnumerator BossTimer()
     {
         yield return new WaitForSeconds(timeToWait);
         targetRotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    void PlayerHP2BossBehaviour(ref bool hasRotated)
+    {
+        Debug.Log("cum");
+        targetPosition = pos2GO.transform.position;
+        targetScale = new Vector3(1.75f, 1.75f, 1.75f);
+        if (!hasRotated2)
+        {
+            hasRotated2 = true;
+            targetRotation = Quaternion.Euler(0, 0, 25f);
+            StartCoroutine(BossTimer());
+        }
+    }
+
+    void PlayerHP1BossBehaviour(ref bool hasRotated)
+    {
+        targetPosition = pos3GO.transform.position;
+        targetScale = new Vector3(2, 2, 2);
+        if (!hasRotated1)
+        {
+            hasRotated1 = true;
+            targetRotation = Quaternion.Euler(0, 0, -25);
+            StartCoroutine(BossTimer());
+        }
     }
 }
