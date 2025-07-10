@@ -19,6 +19,11 @@ TagManager:
   - Sound Manager
   - Start Button
   - TextElements
+  - PopoutWordTextbox1
+  - PopoutWordTextbox2
+  - PopoutWordTextbox3
+  - PopoutWordTextbox4
+  - MainWordTextbox
   layers:
   - Default
   - TransparentFX
