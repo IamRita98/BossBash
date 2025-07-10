@@ -22,7 +22,7 @@ public class OnHoverSFX : MonoBehaviour, IPointerEnterHandler
                     btn.onClick.AddListener(ClickSFX);
                 }*/
         btn.onClick.AddListener(StartClickSFX);
-        soundManager =GameObject.FindGameObjectWithTag("Sound Manager").GetComponent<SoundManager>();
+        soundManager = GameObject.FindGameObjectWithTag("Sound Manager").GetComponent<SoundManager>();
     }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {

@@ -13,11 +13,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseImg;
     public GameObject gameOverImg;
+    public GameObject textElements;
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.SetActive(false);
+        textElements = GameObject.FindGameObjectWithTag("TextElements");
         //gManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
@@ -42,6 +44,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         pauseImg.SetActive(true);
         levelLayout.SetActive(false);
+        textElements.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -50,6 +53,7 @@ public class PauseMenu : MonoBehaviour
         gameOverMenu.SetActive(true);
         gameOverImg.SetActive(true);
         levelLayout.SetActive(false);
+        textElements.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -58,6 +62,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         pauseImg.SetActive(false);
         levelLayout.SetActive(true);
+        textElements.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -76,5 +81,6 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
 }

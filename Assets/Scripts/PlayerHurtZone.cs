@@ -9,17 +9,31 @@ public class PlayerHurtZone : MonoBehaviour
     SoundManager soundManager;
     PauseMenu pMenu;
 
+    public GameObject typeWriter1;
+    public GameObject typeWriter2;
+    public GameObject typeWriter3;
+    public GameObject you;
+    public GameObject are;
+    public GameObject fired;
+
+    public bool damageTakenTest = false;
+
     private void Start()
     {
         pMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
-        soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
+        soundManager = GameObject.Find("Sound Manager")?.GetComponent<SoundManager>();
     }
     
     private void Update()
     {
-        if (playerHP <= 0)
+        if (playerHP < 0)
         {
             pMenu.GameOver();
+        }
+        if(damageTakenTest == true)
+        {
+            damageTakenTest = false;
+            DamageTaken();
         }
     }
 
@@ -30,7 +44,27 @@ public class PlayerHurtZone : MonoBehaviour
             return;
         }
         Destroy(collision);
+        DamageTaken();
+    }
+
+    void DamageTaken()
+    {
         playerHP--;
         soundManager.OnDamageSFX();
+        switch (playerHP)
+        {
+            case 2:
+                typeWriter1.SetActive(false);
+                you.SetActive(true);
+                break;
+            case 1:
+                typeWriter2.SetActive(false);
+                are.SetActive(true);
+                break;
+            case 0:
+                typeWriter3.SetActive(false);
+                fired.SetActive(true);
+                break;
+        }
     }
 }

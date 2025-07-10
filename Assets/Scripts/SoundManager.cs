@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip onStartBtnClickSFX;
     public List<AudioClip> onTypingSFX;
     public List<AudioClip> onDamageSFX;
+    public List<AudioClip> onBossSpeakSFX;
     public bool playDamageSFX;
     public bool playWordCompletionSFX;
     public void Awake()
@@ -74,4 +75,9 @@ public class SoundManager : MonoBehaviour
         aSource.Play();
     }
     //Make sure to add button hover to pause menu buttons!
+    public void OnBossSpeakingSFX()
+    {
+        aSource.clip = onBossSpeakSFX[Random.Range(0, 6)];
+        aSource.Play();
+    }
 }
