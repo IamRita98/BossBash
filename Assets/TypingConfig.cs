@@ -18,7 +18,7 @@ public static class TypingConfig
                 LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "You are coming in late again? This is the fifth time this week. We could have you fired for this."));
                 LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "Fired?"));
                 LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Yes, fired. Gone, done, finished. Either shape up or leave!"));
-                LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "Heh, well, I guess I can reveal my plan then. I've been late because I’ve been gathering evidence. This corporation is corrupt all the way up to the top. And now, I’m going to challenge you to a type-off to claim my place at its head."));
+                LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "Heh, well, I guess I can reveal my plan then. I've been late because I've been gathering evidence. This corporation is corrupt all the way up to the top. And now, I'm going to challenge you to a type-off to claim my place at its head."));
                 LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Wh-What!? A type-off? Are you insane? This isn't a joke! A type-off is a serious thing! Just get back to your desk and get to work and I won't take this infraction any further!"));
                 LevelOneConfig.Add(new TypingLine(entity: "Player", textToType: "No"));
                 LevelOneConfig.Add(new TypingLine(entity: "Enemy", textToType: "Ok then, a type-off it is."));
