@@ -12,10 +12,12 @@ public class MenuInputHandler : MonoBehaviour
     [SerializeField] private List<MenuOption> menuOptions = new();//the typed options
     private string curInput = "";
     SoundManager sm;
+    PauseMenu pm;
     // Start is called before the first frame update
     void Start()
     {
         sm = GameObject.FindGameObjectWithTag("Sound Manager").GetComponent<SoundManager>();
+        pm = GameObject.Find("Canvas").GetComponent<PauseMenu>();
         foreach(var opt in menuOptions)
         {
             opt.Initialize();
@@ -120,7 +122,9 @@ public class MenuInputHandler : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         switch (input)
         {
-            //case "resume":
+            case "resume":
+                pm.ResumeGame();
+                break;
             case "retry":
                 SceneManager.LoadScene(scene.name);
                 break;
