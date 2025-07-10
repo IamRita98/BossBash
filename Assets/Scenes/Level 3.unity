@@ -432,7 +432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
-      value: PopoutWordPlaceholder2
+      value: PopoutWordTextbox2
       objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
@@ -1100,7 +1100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
-      value: PopoutWordPlaceholder4
+      value: PopoutWordTextbox4
       objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
@@ -2747,7 +2747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
-      value: PopoutWordPlaceholder3
+      value: PopoutWordTextbox3
       objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
@@ -2919,7 +2919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
-      value: PopoutWordPlaceholder1
+      value: PopoutWordTextbox1
       objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
@@ -3485,7 +3485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: MainWordTextbox
       objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString

@@ -20,10 +20,18 @@ public class SplineRiderYeehawCowboy : MonoBehaviour
     }
     void ResetSplinePos(TypingEventPayload completedWord)
     {
+        if(sAnimator.Container == null)
+        {
+            return;
+        }
         sAnimator.Restart(false);
     }
     public void StartSpline()
     {
+        if(sAnimator.Container == null)
+        {
+            return;
+        }
         sAnimator.Play();
     }
 }

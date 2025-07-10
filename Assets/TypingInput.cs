@@ -133,15 +133,18 @@ public class TypingInput : MonoBehaviour
         {
             currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
             currentActiveTextToType.text = currentProcessedLine.textToType;
+            if(currentProcessedLine.entity == "Enemy")
+            {
+                GameObject.FindGameObjectWithTag("PopoutWordTextbox1").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+                GameObject.FindGameObjectWithTag("PopoutWordTextbox2").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+                GameObject.FindGameObjectWithTag("PopoutWordTextbox3").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+                GameObject.FindGameObjectWithTag("PopoutWordTextbox4").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+                GameObject.FindGameObjectWithTag("MainWordTextbox").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
+            }
         }
         if (currentProcessedLine.entity == "Enemy")
         {
             sManage.OnBossSpeakingSFX();
-            GameObject.FindGameObjectWithTag("PopoutWordTextbox1").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
-            GameObject.FindGameObjectWithTag("PopoutWordTextbox2").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
-            GameObject.FindGameObjectWithTag("PopoutWordTextbox3").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
-            GameObject.FindGameObjectWithTag("PopoutWordTextbox4").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
-            GameObject.FindGameObjectWithTag("MainWordTextbox").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
         }
     }
 
