@@ -896,6 +896,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScenario: {fileID: 11400000, guid: 8d4c7636fabe6494ab0c04eaae580923, type: 2}
+  currentProcessedLine:
+    entity: 
+    textToType: 
+    textGameTag: 
+    timeAllowed: 0
+    triviaQuestion: 
+    answerOptions: []
+    correctAnswerIndex: 0
   typingConfig: []
   enemyLines: []
   totalWordCount: 0

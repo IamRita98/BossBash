@@ -133,7 +133,7 @@ public class TypingInput : MonoBehaviour
         {
             currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
             currentActiveTextToType.text = currentProcessedLine.textToType;
-            if(currentProcessedLine.entity == "Enemy")
+            if(currentProcessedLine.entity == "Enemy" && currentScenario.scenarioName == "LevelTwo")
             {
                 GameObject.FindGameObjectWithTag("PopoutWordTextbox1").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
                 GameObject.FindGameObjectWithTag("PopoutWordTextbox2").GetComponent<SplineRiderYeehawCowboy>().StartSpline();
