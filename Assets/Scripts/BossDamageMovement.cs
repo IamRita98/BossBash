@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 public class BossDamageMovement : MonoBehaviour
 {
     [SerializeField] private PlayerHurtZone hurtZone;
-    [SerializeField] int desiredHP;
 
     // Transition speed (adjust as needed)
     [SerializeField] private float transitionSpeed = 2f;
@@ -42,7 +41,6 @@ public class BossDamageMovement : MonoBehaviour
     void Update()
     {
         // Debugging: set playerHP based on desiredHP
-        hurtZone.playerHP = desiredHP;
 
         SetTargets(hurtZone.playerHP);
 
