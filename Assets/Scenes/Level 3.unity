@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.y
@@ -430,13 +430,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopoutWordPlacehold2
       objectReference: {fileID: 0}
+    - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_TagString
+      value: PopoutWordPlaceholder2Wrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Name
+      value: PopoutWordPlaceholder2
+      objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
       value: PopoutWordPlaceholder2
       objectReference: {fileID: 0}
     - target: {fileID: 4085202315210559827, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_text
-      value: Word2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_Pivot.x
@@ -516,6 +524,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658775639950412358, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957629861865024297, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_ChildControlWidth
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1030,6 +1046,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScenario: {fileID: 11400000, guid: 0cec073f5f1808b4c9f7dbdf271576a5, type: 2}
+  mainDisplayTextWrapper: {fileID: 0}
+  playerDialogueWrapper: {fileID: 0}
+  userInputWrapper: {fileID: 0}
+  popoutWordPlaceholder1Wrapper: {fileID: 0}
+  popoutWordPlaceholder2Wrapper: {fileID: 0}
+  popoutWordPlaceholder3Wrapper: {fileID: 0}
+  popoutWordPlaceholder4Wrapper: {fileID: 0}
   typingConfig: []
   enemyLines: []
   totalWordCount: 0
@@ -1068,7 +1091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1086,13 +1109,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopoutWordPlacehold4
       objectReference: {fileID: 0}
+    - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_TagString
+      value: PopoutWordPlaceholder4Wrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Name
+      value: PopoutWordPlaceholder4
+      objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
       value: PopoutWordPlaceholder4
       objectReference: {fileID: 0}
     - target: {fileID: 4085202315210559827, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_text
-      value: Word4
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_Pivot.x
@@ -1172,6 +1203,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658775639950412358, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957629861865024297, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_ChildControlWidth
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2596,6 +2635,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UserInput
       objectReference: {fileID: 0}
+    - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_TagString
+      value: UserInputWrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Name
+      value: UserInput
+      objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
       value: UserInput
@@ -2666,11 +2713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -895
+      value: -843
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -634
+      value: -266
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2682,6 +2729,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658775639950412358, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7957629861865024297, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
@@ -2711,7 +2762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2729,13 +2780,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopoutWordPlacehold3
       objectReference: {fileID: 0}
+    - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_TagString
+      value: PopoutWordPlaceholder3Wrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Name
+      value: PopoutWordPlaceholder3
+      objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
       value: PopoutWordPlaceholder3
       objectReference: {fileID: 0}
     - target: {fileID: 4085202315210559827, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_text
-      value: Word3
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_Pivot.x
@@ -2799,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -240
+      value: -347
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2815,6 +2874,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658775639950412358, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957629861865024297, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_ChildControlWidth
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2879,7 +2946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2897,13 +2964,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopoutWordPlacehold1
       objectReference: {fileID: 0}
+    - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_TagString
+      value: PopoutWordPlaceholder1Wrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Name
+      value: PopoutWordPlaceholder1
+      objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
       value: PopoutWordPlaceholder1
       objectReference: {fileID: 0}
     - target: {fileID: 4085202315210559827, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_text
-      value: Word1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_Pivot.x
@@ -2967,7 +3042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -235
+      value: -347
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2983,6 +3058,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658775639950412358, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957629861865024297, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_ChildControlWidth
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3155,7 +3238,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545961963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a1f5b4f045c690439d169d6600772a1, type: 3}
+  m_Script: {fileID: 11500000, guid: d6e9671b41a148540a1b3aca2064ca0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 3
@@ -3461,11 +3544,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: MainDisplayTextWrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Name
+      value: MainDisplayText
       objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
       value: MainDisplayText
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085202315210559827, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_Pivot.x
@@ -3545,6 +3636,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658775639950412358, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7957629861865024297, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
@@ -4103,7 +4198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 30905267734128944, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4123,7 +4218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 328380856005297799, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: PlayerDialogueWrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Name
+      value: PlayerDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 2856316847660352244, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_TagString
@@ -4211,6 +4310,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723564656843824412, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658775639950412358, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957629861865024297, guid: ae743c04fd000ef4a9190d628730859f, type: 3}
+      propertyPath: m_ChildControlWidth
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

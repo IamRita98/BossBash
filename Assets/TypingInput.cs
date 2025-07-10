@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TypingInput : MonoBehaviour
 {
@@ -15,13 +16,30 @@ public class TypingInput : MonoBehaviour
     private HashSet<TypingLine> spawnedLines = new HashSet<TypingLine>();
     private Dictionary<TypingLine, GameObject> spawnedTextObjects = new();
     private Dictionary<string, TextMeshProUGUI> uiTextElements = new();
+    private Dictionary<string, GameObject> uiTextElementWrappers = new();
 
     public TypingScenario currentScenario;
+    public GameObject mainDisplayTextWrapper;
+    public GameObject playerDialogueWrapper;
+    public GameObject userInputWrapper;
+    public GameObject popoutWordPlaceholder1Wrapper;
+    public GameObject popoutWordPlaceholder2Wrapper;
+    public GameObject popoutWordPlaceholder3Wrapper;
+    public GameObject popoutWordPlaceholder4Wrapper;
     public static event System.Action<TypingEventPayload> OnWordCompleted;
     public static event System.Action<string> OnLevelCompleted;
     private List<TypingLine> activePrompts = new List<TypingLine>();
     private TextMeshProUGUI currentActiveTextToType;
     private string[] textTags = { "UserInput", "MainDisplayText", "PlayerDialogue", "PopoutWordPlaceholder1", "PopoutWordPlaceholder2", "PopoutWordPlaceholder3", "PopoutWordPlaceholder4" };
+    private Dictionary<string, string> innerTextTagToWrapperTextBoxTag = new Dictionary<string, string> {
+        { "UserInput", "UserInputWrapper" },
+        { "MainDisplayText", "MainDisplayTextWrapper" },
+        { "PlayerDialogue", "PlayerDialogueWrapper" },
+        { "PopoutWordPlaceholder1", "PopoutWordPlaceholder1Wrapper" },
+        { "PopoutWordPlaceholder2", "PopoutWordPlaceholder2Wrapper" },
+        { "PopoutWordPlaceholder3", "PopoutWordPlaceholder3Wrapper" },
+        { "PopoutWordPlaceholder4", "PopoutWordPlaceholder4Wrapper" }
+    };
 
     private double timeAtWordStart = 0;
     private double currentTime;
@@ -46,7 +64,6 @@ public class TypingInput : MonoBehaviour
         currentTime = Time.timeSinceLevelLoadAsDouble;
         if (!isInitialized)
         {
-            // TODO: Break this list up in the scriptable object assigned in the level so we don't have to maintain this list for every level in code
             if (currentScenario.scenarioName == "LevelOne")
             {
                 TryInitializeUIReferences(new[] { "UserInput", "MainDisplayText", "PlayerDialogue" });
@@ -77,9 +94,8 @@ public class TypingInput : MonoBehaviour
         // Gone over the word time limit
         if (currentTime > timeAtWordStart + currentProcessedLine.timeAllowed)
         {
-            userInputText.text = "";
             ClearTextGameObjects();
-            // Send event to remove healthbar\
+            // Send event to remove healthbar
             
             currentProcessedLineIndex += 1;
             while (currentProcessedLineIndex < typingConfig.Count && typingConfig[currentProcessedLineIndex].entity != "Enemy")
@@ -94,45 +110,48 @@ public class TypingInput : MonoBehaviour
 
     void ClearTextGameObjects()
     {
-        uiTextElements.TryGetValue("UserInput", out var UserInputLineTextVar);
-        uiTextElements.TryGetValue("MainDisplayText", out var MainDisplayLineTextVar);
-        uiTextElements.TryGetValue("PlayerDialogue", out var playerDialogueTextVar);
-        UserInputLineTextVar.text = "";
-        MainDisplayLineTextVar.text = "";
-        playerDialogueTextVar.text = "";
+        HideTextbox("UserInput");
+        HideTextbox("MainDisplayText");
+        HideTextbox("PlayerDialogue");
         if (currentScenario.scenarioName == "LevelTwo" || currentScenario.scenarioName == "LevelThree")
         {
-            uiTextElements.TryGetValue("PopoutWordPlaceholder1", out var PopoutWordPlaceholder1TextVar);
-            uiTextElements.TryGetValue("PopoutWordPlaceholder2", out var PopoutWordPlaceholder2TextVar);
-            uiTextElements.TryGetValue("PopoutWordPlaceholder3", out var PopoutWordPlaceholder3TextVar);
-            uiTextElements.TryGetValue("PopoutWordPlaceholder4", out var PopoutWordPlaceholder4TextVar);
-            PopoutWordPlaceholder1TextVar.text = "";
-            PopoutWordPlaceholder2TextVar.text = "";
-            PopoutWordPlaceholder3TextVar.text = "";
-            PopoutWordPlaceholder4TextVar.text = "";
+            HideTextbox("PopoutWordPlaceholder1");
+            HideTextbox("PopoutWordPlaceholder2");
+            HideTextbox("PopoutWordPlaceholder3");
+            HideTextbox("PopoutWordPlaceholder4");
         }
+    }
+
+    void HideTextbox(string tag)
+    {
+        uiTextElements.TryGetValue(tag, out var textElementToHide);
+        uiTextElementWrappers.TryGetValue(tag, out var wrapperElementToHide);
+        wrapperElementToHide.GetComponent<Image>().enabled = false;
+        textElementToHide.text = "";
+    }
+
+    void ShowTextbox(string tag, string text)
+    {
+        uiTextElements.TryGetValue(tag, out var textElementToShow);
+        uiTextElementWrappers.TryGetValue(tag, out var wrapperElementToShow);
+        textElementToShow.text = text;
+        wrapperElementToShow.GetComponent<Image>().enabled = true;
     }
 
     void SpawnNextLine()
     {
         if (currentProcessedLine.IsTrivia)
         {
-            uiTextElements.TryGetValue("MainDisplayText", out var MainDisplayTextVar);
-            MainDisplayTextVar.text = currentProcessedLine.triviaQuestion;
-
-            uiTextElements.TryGetValue("PopoutWordPlaceholder1", out var PopoutWordPlaceholder1TextVar);
-            uiTextElements.TryGetValue("PopoutWordPlaceholder2", out var PopoutWordPlaceholder2TextVar);
-            uiTextElements.TryGetValue("PopoutWordPlaceholder3", out var PopoutWordPlaceholder3TextVar);
-            uiTextElements.TryGetValue("PopoutWordPlaceholder4", out var PopoutWordPlaceholder4TextVar);
-            PopoutWordPlaceholder1TextVar.text = currentProcessedLine.answerOptions[0];
-            PopoutWordPlaceholder2TextVar.text = currentProcessedLine.answerOptions[1];
-            PopoutWordPlaceholder3TextVar.text = currentProcessedLine.answerOptions[2];
-            PopoutWordPlaceholder4TextVar.text = currentProcessedLine.answerOptions[3];
+            ShowTextbox("MainDisplayText", currentProcessedLine.triviaQuestion);
+            ShowTextbox("PopoutWordPlaceholder1", currentProcessedLine.answerOptions[0]);
+            ShowTextbox("PopoutWordPlaceholder2", currentProcessedLine.answerOptions[1]);
+            ShowTextbox("PopoutWordPlaceholder3", currentProcessedLine.answerOptions[2]);
+            ShowTextbox("PopoutWordPlaceholder4", currentProcessedLine.answerOptions[3]);
         }
         else
         {
+            ShowTextbox(currentProcessedLine.textGameTag, currentProcessedLine.textToType);
             currentActiveTextToType = GameObject.FindGameObjectWithTag(currentProcessedLine.textGameTag)?.GetComponent<TextMeshProUGUI>();
-            currentActiveTextToType.text = currentProcessedLine.textToType;
         }
         if (currentProcessedLine.entity == "Enemy")
         {
@@ -165,7 +184,10 @@ public class TypingInput : MonoBehaviour
                 if (tmp != null)
                 {
                     uiTextElements[tag] = tmp;
-                    if (currentScenario.scenarioName == "LevelTwo" || currentScenario.scenarioName == "LevelThree") tmp.text = "";
+                    if (currentScenario.scenarioName == "LevelTwo" || currentScenario.scenarioName == "LevelThree")
+                    {
+                        tmp.text = "";
+                    }
                 }
                 else
                 {
@@ -176,6 +198,25 @@ public class TypingInput : MonoBehaviour
             {
                 return;
             }
+
+            GameObject wrapperGo = GameObject.FindGameObjectWithTag(innerTextTagToWrapperTextBoxTag[tag]);
+            if (wrapperGo != null)
+            {
+                TextMeshProUGUI tmp = go.GetComponent<TextMeshProUGUI>();
+                if (tmp != null)
+                {
+                    uiTextElementWrappers[tag] = wrapperGo;
+                }
+                else
+                {
+                    Debug.LogWarning($"No TextMeshProUGUI on GameObject with tag '{tag}'");
+                }
+            }
+            else
+            {
+                return;
+            }
+
         }
         currentProcessedLineIndex = 0;
         currentProcessedLine = typingConfig[0];
@@ -191,11 +232,14 @@ public class TypingInput : MonoBehaviour
 
         foreach (char c in Input.inputString)
         {
-            if (c == '\b' && rawInput.Length > 0)
+            if (c == '\b')
             {
-                rawInput = rawInput.Substring(0, rawInput.Length - 1);
+                if (rawInput.Length > 0)
+                {
+                    rawInput = rawInput.Substring(0, rawInput.Length - 1);
+                }
             }
-            else
+            else if (!char.IsControl(c))
             {
                 rawInput += c;
             }
@@ -209,8 +253,7 @@ public class TypingInput : MonoBehaviour
 
         if (currentProcessedLine.IsTrivia)
         {
-            string triviaTargetText = currentProcessedLine.answerOptions[currentProcessedLine.correctAnswerIndex];
-            userInputText.text = rawInput;
+            ShowTextbox("UserInput", rawInput);
         }
         else {
             string targetText = currentActiveTextToType.text;
@@ -230,8 +273,7 @@ public class TypingInput : MonoBehaviour
             {
                 outputText = $"<color=green>{rawInput}</color>";
             }
-
-            userInputText.text = outputText;
+            ShowTextbox("UserInput", outputText);
         }
     }
 
@@ -283,7 +325,6 @@ public class TypingInput : MonoBehaviour
     //Could change this to a coroutine to introduce a delay before going to the next line - used for an animation
     private void AdvanceToNextTypingLine()
     {
-        if (!uiTextElements.TryGetValue("PlayerDialogue", out var playerDialogueTextVar)) return;
         if (!uiTextElements.TryGetValue("MainDisplayText", out var mainDisplayTextVar)) return;
 
         ClearTextGameObjects();
@@ -291,7 +332,7 @@ public class TypingInput : MonoBehaviour
         currentProcessedLineIndex += 1;
         while (currentProcessedLineIndex < typingConfig.Count && typingConfig[currentProcessedLineIndex].entity != "Enemy")
         {
-            playerDialogueTextVar.text = typingConfig[currentProcessedLineIndex].textToType;
+            ShowTextbox("PlayerDialogue", typingConfig[currentProcessedLineIndex].textToType);
             currentProcessedLineIndex += 1;
         }
         currentProcessedLine = typingConfig[currentProcessedLineIndex];

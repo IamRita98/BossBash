@@ -19,6 +19,13 @@ TagManager:
   - Sound Manager
   - Start Button
   - TextElements
+  - MainDisplayTextWrapper
+  - UserInputWrapper
+  - PlayerDialogueWrapper
+  - PopoutWordPlaceholder1Wrapper
+  - PopoutWordPlaceholder2Wrapper
+  - PopoutWordPlaceholder3Wrapper
+  - PopoutWordPlaceholder4Wrapper
   layers:
   - Default
   - TransparentFX
