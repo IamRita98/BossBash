@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -41,6 +42,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Level completed: " + scenarioName);
         currentLevel++;
+        if(currentLevel < 4)
+        {
+            SceneManager.LoadScene("Level " + currentLevel);
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+        
         //end current level and play a cut scene or something to move to next level or end game
     }
 
