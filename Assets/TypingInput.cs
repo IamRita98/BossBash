@@ -337,6 +337,13 @@ public class TypingInput : MonoBehaviour
     {
         if (!uiTextElements.TryGetValue("MainDisplayText", out var mainDisplayTextVar)) return;
 
+        if (currentProcessedLineIndex >= typingConfig.Count - 1)
+        {
+            mainDisplayTextVar.text = "";
+            OnLevelCompleted?.Invoke(currentScenario.scenarioName);
+            return;
+        }
+
         ClearTextGameObjects();
         Debug.Log($"Advancing to next line at line: {currentProcessedLine.textToType}");
         currentProcessedLineIndex += 1;
@@ -348,12 +355,6 @@ public class TypingInput : MonoBehaviour
         currentProcessedLine = typingConfig[currentProcessedLineIndex];
         SpawnNextLine();
         timeAtWordStart = currentTime;
-
-        if( currentProcessedLineIndex >= typingConfig.Count )
-        {
-            mainDisplayTextVar.text = "";
-            OnLevelCompleted?.Invoke(currentScenario.scenarioName);
-        }
     }
 
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LevelOneTypingScenario
   m_EditorClassIdentifier: 
   scenarioName: LevelOne
-  timeLimit: 10
+  timeLimit: 170
