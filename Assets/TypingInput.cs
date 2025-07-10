@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class TypingInput : MonoBehaviour
     private Dictionary<TypingLine, GameObject> spawnedTextObjects = new();
     private Dictionary<string, TextMeshProUGUI> uiTextElements = new();
     private Dictionary<string, GameObject> uiTextElementWrappers = new();
+    PlayerHurtZone pHurtZone;
 
     public TypingScenario currentScenario;
     public GameObject mainDisplayTextWrapper;
@@ -56,6 +58,7 @@ public class TypingInput : MonoBehaviour
     public void Start()
     {
         InitializeTypingScenario();
+        pHurtZone = GameObject.Find("Player").GetComponent<PlayerHurtZone>();
         sManage = GameObject.FindGameObjectWithTag("Sound Manager")?.GetComponent<SoundManager>();
     }
 
@@ -97,8 +100,7 @@ public class TypingInput : MonoBehaviour
         {
             userInputText.text = "";
             ClearTextGameObjects();
-            // Send event to remove healthbar\
-            
+            pHurtZone.DamageTaken();
             currentProcessedLineIndex += 1;
             while (currentProcessedLineIndex < typingConfig.Count && typingConfig[currentProcessedLineIndex].entity != "Enemy")
             {
@@ -305,7 +307,7 @@ public class TypingInput : MonoBehaviour
                     else
                     {
                         // Send event for word failed
-                        Debug.Log("Wrong Answer");
+                        pHurtZone.DamageTaken();
                     }
 
                     rawInput = "";
