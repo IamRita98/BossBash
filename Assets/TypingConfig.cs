@@ -37,11 +37,11 @@ public static class TypingConfig
                 LevelTwoConfig.Add(new TypingLine(entity: "Player", textToType: "Me!"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You're serious... Well then, just try to out-type this!", timeAllowed: 2.0));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "The Word Corporation is displeased to hear of your recent dissatisfaction within our company. " +
-                    "Word Corporation is not liable for any mental, physical, or psychic Infractions against your person during your employment, you have agreed to sign away these rights in your onboarding contract when joining our company.", timeAllowed: 2.0));
+                    "Word Corporation is not liable for any mental, physical, or psychic infractions against your person during your employment, you have agreed to sign away these rights in your onboarding contract when joining our company.", timeAllowed: 2.0));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "Should our employees find any pressing issues after the signing of this contract, then they may be entitled to trial by typing in order to have their grievances properly represented. However, those who fail said trial forfeit their right to type for all " +
                     "of eternity.", timeAllowed: 2.0));
                 LevelTwoConfig.Add(new TypingLine(entity: "Player", textToType: "Uhm... I agree to these terms and conditions?"));
-                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You can outype a full block, but so what? Lets see how you do against my barrage attack!", timeAllowed: 2.0));
+                LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You can outtype a full block, but so what? Lets see how you do against my barrage attack!", timeAllowed: 2.0));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "You're:", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder1"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "lackluster", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder3"));
                 LevelTwoConfig.Add(new TypingLine(entity: "Enemy", textToType: "malodorous", timeAllowed: 30.0, textGameTag: "PopoutWordPlaceholder4"));
@@ -77,7 +77,7 @@ public static class TypingConfig
                     entity: "Enemy",
                     timeAllowed: 20.0,
                     triviaQuestion: "What is your motive?",
-                    answerOptions: new List<string> { "Become the Executive", "Lead the Council", "Become the CEO", "Destroy all corproations with a nuclear blast" },
+                    answerOptions: new List<string> { "Become the Executive", "Lead the Council", "Become the CEO", "Destroy all corporations with a nuclear blast" },
                     correctAnswerIndex: 3
                 ));
                 LevelThreeConfig.Add(new TypingLine(entity: "Enemy", textToType: "Heh! That was just the warmup, too bad for you that I'm a genius with excellent memory", timeAllowed: 20.0));
