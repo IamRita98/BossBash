@@ -18,6 +18,7 @@ TagManager:
   - PopoutWordPlaceholder4
   - Sound Manager
   - Start Button
+  - MainMenuInput
   - TextElements
   - PopoutWordTextbox1
   - PopoutWordTextbox2
