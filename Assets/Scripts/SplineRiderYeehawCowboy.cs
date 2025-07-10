@@ -7,6 +7,7 @@ public class SplineRiderYeehawCowboy : MonoBehaviour
 {
     SplineAnimate sAnimator;
     TypingInput tInput;
+    float timer = 0;
 
     private void Start()
     {
@@ -16,10 +17,12 @@ public class SplineRiderYeehawCowboy : MonoBehaviour
     }
     private void Update()
     {
-        //sAnimator.Duration = (float)tInput.currentProcessedLine.timeAllowed;
-        if(sAnimator.Duration == 0)
+        timer += Time.deltaTime;
+        sAnimator.Duration = (float)tInput.currentProcessedLine.timeAllowed;
+        if(timer >= tInput.currentProcessedLine.timeAllowed)
         {
             sAnimator.Restart(false);
+            timer = 0;
         }
     }
     void ResetSplinePos(TypingEventPayload completedWord)
@@ -28,7 +31,8 @@ public class SplineRiderYeehawCowboy : MonoBehaviour
         {
             return;
         }
-        sAnimator.Duration = (float)tInput.currentProcessedLine.timeAllowed;
+        timer = 0;
+        //sAnimator.Duration = (float)tInput.currentProcessedLine.timeAllowed;
         sAnimator.Restart(false);
     }
     public void StartSpline()
