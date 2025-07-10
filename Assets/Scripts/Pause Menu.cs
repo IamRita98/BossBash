@@ -35,10 +35,6 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
-/*        if (pauseMenu.activeSelf && Input.GetKeyDown(KeyCode.Escape))
-        {
-            ResumeGame();
-        }*/
     }
 
     public void PauseGame()
