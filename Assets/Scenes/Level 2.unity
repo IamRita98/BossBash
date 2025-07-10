@@ -167,8 +167,12 @@ PrefabInstance:
       value: 570489079
       objectReference: {fileID: 0}
     - target: {fileID: 1453579993612733024, guid: 48e3018a3459d244688975486c21c60a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b68a2b0b3cb4c64db99ff17b0e2a582, type: 3}
+    - target: {fileID: 1453579993612733024, guid: 48e3018a3459d244688975486c21c60a, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1453579993612733024, guid: 48e3018a3459d244688975486c21c60a, type: 3}
       propertyPath: m_SortingOrder
@@ -400,7 +404,6 @@ MonoBehaviour:
   you: {fileID: 0}
   are: {fileID: 0}
   fired: {fileID: 0}
-  damageTakenTest: 0
 --- !u!1 &33877734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,7 +2653,7 @@ Transform:
   m_GameObject: {fileID: 995186620}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -162, y: 98.156006, z: 6.948177}
+  m_LocalPosition: {x: 189, y: 98.156006, z: 6.948177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2716,28 +2719,28 @@ MonoBehaviour:
         z: 231.04327
       Rotation:
         value:
-          x: -0.20815633
-          y: 0.6757745
-          z: -0.67577463
-          w: 0.20815495
+          x: 0.20815633
+          y: -0.6757746
+          z: 0.6757745
+          w: -0.2081549
     - Position:
-        x: 304.00348
+        x: 120.01
         y: -516.2332
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -31.075716
+        z: -17.9363
       TangentOut:
         x: 0
         y: 0
-        z: 31.075716
+        z: 17.9363
       Rotation:
         value:
-          x: 0.34940904
-          y: -0.6147465
-          z: 0.61474663
-          w: -0.3494088
+          x: 0.16847095
+          y: -0.68674415
+          z: 0.6867443
+          w: -0.16847049
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -4582,7 +4585,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.77, y: 0.06, z: 34.6}
-  m_LocalScale: {x: 1.07625, y: 1.075, z: 1}
+  m_LocalScale: {x: 0.6527456, y: 0.65962005, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 852269031}
@@ -4628,7 +4631,7 @@ SpriteRenderer:
   m_SortingLayerID: 1971635903
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6abe3ecbe1d1bad49a8611c5d8cf0cf3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c6f1b24f7fecb74f898eec0bf18a108, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
